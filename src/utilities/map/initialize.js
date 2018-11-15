@@ -1,14 +1,16 @@
-export const width = 100;
-export const height = 100;
+import {MAP_SIZE} from './constants';
 
 export function initializeMap() {
   const map = [];
 
-  for (let x = 0; x < width; x++) {
+  for (let x = 0; x < MAP_SIZE; x++) {
     let row = [];
 
-    for (let y = 0; y < height; y++) {
-      row.push(0);
+    for (let y = 0; y < MAP_SIZE; y++) {
+      row.push({
+        type: 'tile',
+        index: [x, y]
+      });
     }
 
     map.push(row);
