@@ -5,7 +5,7 @@ import App from './app/app';
 ReactDOM.render(
   <div className="background">
     <App/>
-    </div>,
+  </div>,
   document.getElementById('app')
 );
 

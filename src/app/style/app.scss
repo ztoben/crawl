@@ -1,0 +1,43 @@
+$size: 750px;
+$header-height: 40px;
+$view-units: 15;
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: darkgray;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.app-container {
+  width: $size;
+  height: $size;
+  display: flex;
+  color: white;
+  background-color: black;
+  flex-direction: column;
+
+  h1 {
+    text-align: center;
+    height: $header-height;
+    margin: 20px 0;
+  }
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+
+  .tile {
+    width: calc(#{$size}/#{$view-units} - 2px);
+    height: calc(calc(#{$size} - #{$header-height} * 2 + 1px)/#{$view-units} - 2px);
+    display: inline-block;
+  }
+}
