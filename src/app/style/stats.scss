@@ -1,0 +1,12 @@
+@import './variables';
+
+.stats-container {
+  height: $size;
+  width: 200px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin-right: 10px;
+  border: $container-border;
+}

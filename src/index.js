@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './app/app';
 
 ReactDOM.render(
-  <div className="background">
-    <App/>
-  </div>,
+  <App/>,
   document.getElementById('app')
 );
 

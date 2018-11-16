@@ -1,0 +1,12 @@
+@import './variables';
+
+.inventory-container {
+  height: $size;
+  width: 300px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  color: white;
+  margin-left: 10px;
+  border: $container-border;
+}

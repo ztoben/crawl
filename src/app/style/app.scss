@@ -1,4 +1,4 @@
-@import './_variables.scss';
+@import './variables.scss';
 
 body {
   width: 100vw;
@@ -11,6 +11,15 @@ body {
   justify-content: center;
   text-transform: uppercase;
   font-family: 'Source Code Pro', monospace;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  width: 100vw;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
 .app-container {
@@ -20,6 +29,7 @@ body {
   color: white;
   background-color: black;
   flex-direction: column;
+  border: $container-border;
 
   h1 {
     text-align: center;
@@ -34,8 +44,8 @@ body {
   font-size: 0;
 
   .tile {
-    width: calc(#{$size}/#{$view-units} - 2px);
-    height: calc(calc(#{$size} - #{$header-height} * 2 + 1px)/#{$view-units} - 2px);
+    width: calc(#{$size}/#{$view-units});
+    height: calc(calc(#{$size} - #{$header-height} * 2 + 1px)/#{$view-units});
     display: inline-flex;
   }
 }

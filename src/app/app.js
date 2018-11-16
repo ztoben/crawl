@@ -1,10 +1,12 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {initializeMap} from '../utilities';
-import './style/app.scss';
 import Tile from './components/tile';
 import getViewingArea from '../utilities/map/getViewingArea';
 import isArrayEqual from '../utilities/isArrayEqual';
 import {normalizePosition} from '../utilities/map/normalizePosition';
+import Stats from './components/stats';
+import Inventory from './components/inventory';
+import './style/app.scss';
 
 export default class App extends Component {
   constructor(props) {
@@ -60,12 +62,16 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="app-container" onKeyDown={this.handleKeyDown}>
-        <h1>c r a w l</h1>
-        <div className="map-container">
-          {this.renderTiles()}
+      <Fragment>
+        <Stats/>
+        <div className="app-container" onKeyDown={this.handleKeyDown}>
+          <h1>c r a w l</h1>
+          <div className="map-container">
+            {this.renderTiles()}
+          </div>
         </div>
-      </div>
+        <Inventory/>
+      </Fragment>
   )
   }
 }
