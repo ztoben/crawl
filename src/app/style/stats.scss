@@ -2,11 +2,17 @@
 
 .stats-container {
   height: $size;
-  width: 200px;
+  width: 250px;
   background-color: black;
   display: flex;
   justify-content: center;
   color: white;
-  margin-right: 10px;
+  margin-left: 10px;
   border: $container-border;
+
+  h2 {
+    height: 40px;
+    margin: 20px 0;
+    text-align: center;
+  }
 }

@@ -4,8 +4,8 @@ import Tile from './components/tile';
 import getViewingArea from '../utilities/map/getViewingArea';
 import isArrayEqual from '../utilities/isArrayEqual';
 import {normalizePosition} from '../utilities/map/normalizePosition';
+import Info from './components/info';
 import Stats from './components/stats';
-import Inventory from './components/inventory';
 import './style/app.scss';
 
 export default class App extends Component {
@@ -14,7 +14,7 @@ export default class App extends Component {
 
     this.state = {
       map: initializeMap(),
-      selectedPosition: [0, 0]
+      selectedPosition: [7, 7]
     };
   }
 
@@ -63,14 +63,14 @@ export default class App extends Component {
   render() {
     return (
       <Fragment>
-        <Stats/>
+        <Info/>
         <div className="app-container" onKeyDown={this.handleKeyDown}>
           <h1>c r a w l</h1>
           <div className="map-container">
             {this.renderTiles()}
           </div>
         </div>
-        <Inventory/>
+        <Stats/>
       </Fragment>
   )
   }
