@@ -1,8 +1,12 @@
 import {MAP_SIZE} from './constants';
 
-export function normalizePosition(position) {
-  if (position < 0) return 0;
-  if (position > MAP_SIZE) return MAP_SIZE;
+function normalizeCoordinate(coord) {
+  if (coord < 0) return 0;
+  if (coord > MAP_SIZE) return MAP_SIZE;
 
-  return position;
+  return coord;
+}
+
+export function normalizePosition(prevPosition) {
+  return [normalizeCoordinate(prevPosition[0]), normalizeCoordinate(prevPosition[1])]
 }

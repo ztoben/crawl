@@ -39,7 +39,7 @@ export default class App extends Component {
     }
 
     this.setState({
-      position: [normalizePosition(position[0]), normalizePosition(position[1])]
+      position: normalizePosition(position)
     });
   };
 
