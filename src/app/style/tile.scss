@@ -12,5 +12,10 @@
 
   &.selected {
     background-color: lightgray;
+
+    p {
+      background: black;
+      padding: 4px;
+    }
   }
 }

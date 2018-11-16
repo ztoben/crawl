@@ -8,7 +8,7 @@ class Tile extends Component {
 
     return (
       <div className={`tile${selected ? ' selected' : ''}`}>
-        <p>{content}</p>
+        <p>{selected ? '\u039E' : content}</p>
       </div>
     );
   }
