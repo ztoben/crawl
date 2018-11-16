@@ -12,7 +12,7 @@ export default class App extends Component {
 
     this.state = {
       map: initializeMap(),
-      position: [0, 0]
+      selectedPosition: [0, 0]
     };
   }
 
@@ -21,37 +21,38 @@ export default class App extends Component {
   }
 
   handleKeyDown = (event) => {
-    const {position} = this.state;
+    const {selectedPosition} = this.state;
 
     switch (event.key) {
       case 'ArrowDown':
-        position[0]++;
+        selectedPosition[0]++;
         break;
       case 'ArrowUp':
-        position[0]--;
+        selectedPosition[0]--;
         break;
       case 'ArrowLeft':
-        position[1]--;
+        selectedPosition[1]--;
         break;
       case 'ArrowRight':
-        position[1]++;
+        selectedPosition[1]++;
         break;
     }
 
     this.setState({
-      position: normalizePosition(position)
+      selectedPosition: normalizePosition(selectedPosition)
     });
   };
 
   renderTiles = () => {
-    const {map, position} = this.state;
+    const {map, selectedPosition} = this.state;
 
-    return getViewingArea(position, map).map(row => {
-      return row.map(({type, index}) => {
+    return getViewingArea(selectedPosition, map).map(row => {
+      return row.map(({type, index, content}) => {
         return <Tile
           type={type}
-          selected={isArrayEqual(position, index)}
+          selected={isArrayEqual(selectedPosition, index)}
           key={index.toString()}
+          content={content}
         />;
       });
     });

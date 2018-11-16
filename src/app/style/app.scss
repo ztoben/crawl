@@ -1,6 +1,4 @@
-$size: 600px;
-$header-height: 40px;
-$view-units: 15;
+@import './_variables.scss';
 
 body {
   width: 100vw;
@@ -38,6 +36,6 @@ body {
   .tile {
     width: calc(#{$size}/#{$view-units} - 2px);
     height: calc(calc(#{$size} - #{$header-height} * 2 + 1px)/#{$view-units} - 2px);
-    display: inline-block;
+    display: inline-flex;
   }
 }

@@ -1,3 +1,4 @@
+import any from '@travi/any';
 import {MAP_SIZE} from './constants';
 
 export function initializeMap() {
@@ -9,7 +10,8 @@ export function initializeMap() {
     for (let y = 0; y < MAP_SIZE; y++) {
       row.push({
         type: 'tile',
-        index: [x, y]
+        index: [x, y],
+        content: any.fromList(['*', '|', '_'])
       });
     }
 

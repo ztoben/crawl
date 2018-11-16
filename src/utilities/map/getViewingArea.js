@@ -4,7 +4,7 @@ function normalizePosition(pos) {
   if (pos < (VIEW_SIZE / 2)) return 0;
   if (pos > (MAP_SIZE - (VIEW_SIZE / 2))) return MAP_SIZE - VIEW_SIZE;
 
-  return pos;
+  return pos - Math.round(VIEW_SIZE / 2) + 1;
 }
 
 export default function getViewingArea(position, map) {
