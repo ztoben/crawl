@@ -4,6 +4,7 @@ import './style/app.scss';
 import Tile from './components/tile';
 import getViewingArea from '../utilities/map/getViewingArea';
 import isArrayEqual from '../utilities/isArrayEqual';
+import {normalizePosition} from '../utilities/map/normalizePosition';
 
 export default class App extends Component {
   constructor(props) {
@@ -37,7 +38,9 @@ export default class App extends Component {
         break;
     }
 
-    this.setState({position});
+    this.setState({
+      position: [normalizePosition(position[0]), normalizePosition(position[1])]
+    });
   };
 
   renderTiles = () => {
