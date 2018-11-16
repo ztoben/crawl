@@ -1,5 +1,6 @@
-import any from '@travi/any';
 import {MAP_SIZE} from './constants';
+import isBoundary from "./isBoundary";
+import buildTileContent from "./tiles/buildTileContent";
 
 export function initializeMap() {
   const map = [];
@@ -8,10 +9,14 @@ export function initializeMap() {
     let row = [];
 
     for (let y = 0; y < MAP_SIZE; y++) {
+      const boundary = isBoundary(x, y);
+      const type = boundary ? 'boundary' : 'tile';
+      const index = [x, y];
+
       row.push({
-        type: 'tile',
-        index: [x, y],
-        content: any.fromList(['*', '|', '_'])
+        type,
+        index,
+        content: buildTileContent(type, index)
       });
     }
 
