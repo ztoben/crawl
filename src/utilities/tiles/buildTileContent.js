@@ -1,6 +1,6 @@
 import any from '@travi/any';
 import {BOUNDARY} from "./tileTypes";
-import {MAP_SIZE} from "../constants";
+import {MAP_SIZE} from "../map/constants";
 
 export default function buildTileContent(type, position) {
   if (type !== BOUNDARY) return any.fromList(['*', '-', '<', '>']);

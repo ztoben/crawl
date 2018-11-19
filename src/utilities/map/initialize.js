@@ -1,4 +1,4 @@
-import buildTileContent from "./tiles/buildTileContent";
+import buildTileContent from "../tiles/buildTileContent";
 import {isOuterBoundary} from "./isOuterBoundary";
 import {MAP_SIZE} from './constants';
 
