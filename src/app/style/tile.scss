@@ -2,7 +2,6 @@
 
 .tile {
   width: calc(#{$size}/#{$view-units});
-  height: calc(calc(#{$size} - #{$header-height} * 2 + 1px)/#{$view-units});
   display: inline-flex;
   align-content: center;
   align-items: center;

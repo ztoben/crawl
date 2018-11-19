@@ -1,7 +1,8 @@
 import {BOUNDARY} from '../tiles/tileTypes';
 
 const boundaryStyle = {
-  fontSize: 12
+  fontSize: 18,
+  fontWeight: 'bold'
 };
 
 export function getStyle(type) {

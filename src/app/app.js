@@ -31,15 +31,19 @@ export default class App extends Component {
     const {map, selectedPosition} = this.state;
 
     return getViewingArea(selectedPosition, map).map(row => {
-      return row.map(({type, index, content, style}) => {
-        return <Tile
-          type={type}
-          selected={isArrayEqual(selectedPosition, index)}
-          key={index.toString()}
-          content={content}
-          style={style}
-        />;
-      });
+      return (
+        <div className="row">
+          {row.map(({type, index, content, style}) => {
+            return <Tile
+              type={type}
+              selected={isArrayEqual(selectedPosition, index)}
+              key={index.toString()}
+              content={content}
+              style={style}
+            />;
+          })}
+        </div>
+      );
     });
   };
 
