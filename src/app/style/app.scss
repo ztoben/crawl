@@ -42,10 +42,4 @@ body {
   width: 100%;
   height: 100%;
   font-size: 0;
-
-  .tile {
-    width: calc(#{$size}/#{$view-units});
-    height: calc(calc(#{$size} - #{$header-height} * 2 + 1px)/#{$view-units});
-    display: inline-flex;
-  }
 }

@@ -1,6 +1,7 @@
 import buildTileContent from "../tiles/buildTileContent";
 import {isOuterBoundary} from "./isOuterBoundary";
 import {MAP_SIZE} from './constants';
+import {getStyle} from './getStyle';
 
 export function initializeMap() {
   const map = [];
@@ -16,7 +17,8 @@ export function initializeMap() {
       row.push({
         type,
         index,
-        content: buildTileContent(type, index)
+        content: buildTileContent(type, index),
+        style: getStyle(type)
       });
     }
 

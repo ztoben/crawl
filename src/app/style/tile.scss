@@ -1,11 +1,16 @@
+@import './variables';
+
 .tile {
+  width: calc(#{$size}/#{$view-units});
+  height: calc(calc(#{$size} - #{$header-height} * 2 + 1px)/#{$view-units});
+  display: inline-flex;
   align-content: center;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
-  p {
-    font-size: 12px;
-    margin: 0 auto;
+  span {
+    font-size: 10px;
     padding: 0;
   }
 

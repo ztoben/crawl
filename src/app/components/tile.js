@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import {string, bool} from 'prop-types';
+import {string, bool, object} from 'prop-types';
 import '../style/tile.scss';
 
 class Tile extends Component {
   render() {
-    const {selected, content} = this.props;
+    const {selected, content, style} = this.props;
 
     return (
       <div className={`tile${selected ? ' selected' : ''}`}>
-        <p>{selected ? '\u039E' : content}</p>
+        <span style={style}>{selected ? '\u039E' : content}</span>
       </div>
     );
   }
@@ -17,7 +17,8 @@ class Tile extends Component {
 Tile.propTypes = {
   type: string,
   selected: bool,
-  content: string
+  content: string,
+  style: object
 };
 
 export default Tile;
