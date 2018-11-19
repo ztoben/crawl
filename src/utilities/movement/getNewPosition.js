@@ -1,5 +1,5 @@
 import {normalizePosition} from './normalizePosition';
-import {getTile, isBoundary} from '..';
+import {getTile, isBoundary, isWall} from '..';
 
 function getPositionAfterEvent(selectedPosition, event) {
   const newPosition = [...selectedPosition];
@@ -27,6 +27,7 @@ export function getNewPosition(map, selectedPosition, event) {
   const tile = getTile(map, newPosition);
 
   if (isBoundary(tile)) return selectedPosition;
+  if (isWall(tile)) return selectedPosition;
 
   return normalizePosition(newPosition);
 }
