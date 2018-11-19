@@ -1,7 +1,7 @@
 import {normalizePosition} from './normalizePosition';
 import {isBoundary} from '..';
 
-export function getNewPosition(selectedPosition, event) {
+export function getNewPosition(map, selectedPosition, event) {
   const newPosition = [...selectedPosition];
 
   switch (event.key) {
@@ -19,7 +19,7 @@ export function getNewPosition(selectedPosition, event) {
       break;
   }
 
-  if (isBoundary(newPosition)) return selectedPosition;
+  if (isBoundary(map, newPosition)) return selectedPosition;
 
   return normalizePosition(newPosition);
 }

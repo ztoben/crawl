@@ -20,10 +20,10 @@ export default class App extends Component {
   }
 
   handleKeyDown = (event) => {
-    const {selectedPosition} = this.state;
+    const {selectedPosition, map} = this.state;
 
     this.setState({
-      selectedPosition: getNewPosition(selectedPosition, event)
+      selectedPosition: getNewPosition(map, selectedPosition, event)
     });
   };
 

@@ -1,6 +1,6 @@
 import {MAP_SIZE} from "./constants";
 
-export function isBoundary(position) {
+export function isOuterBoundary(position) {
   const [x, y] = position;
 
   if (x === 0 || y === 0) return true;

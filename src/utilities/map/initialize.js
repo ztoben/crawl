@@ -1,5 +1,5 @@
 import buildTileContent from "./tiles/buildTileContent";
-import {isBoundary} from "./isBoundary";
+import {isOuterBoundary} from "./isOuterBoundary";
 import {MAP_SIZE} from './constants';
 
 export function initializeMap() {
@@ -9,7 +9,7 @@ export function initializeMap() {
     let row = [];
 
     for (let y = 0; y < MAP_SIZE; y++) {
-      const boundary = isBoundary([x, y]);
+      const boundary = isOuterBoundary([x, y]);
       const type = boundary ? 'boundary' : 'tile';
       const index = [x, y];
 
