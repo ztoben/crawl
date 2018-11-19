@@ -7,7 +7,7 @@ function normalizePosition(pos) {
   return pos - Math.round(VIEW_SIZE / 2) + 1;
 }
 
-export default function getViewingArea(position, map) {
+export function getViewingArea(position, map) {
   const [posX, posY] = position;
   const viewingArea = [];
 

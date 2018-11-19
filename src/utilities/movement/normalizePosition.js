@@ -1,4 +1,4 @@
-import {MAP_SIZE} from './constants';
+import {MAP_SIZE} from '../map/constants';
 
 function containCoordinateToBounds(coord) {
   if (coord < 0) return 0;

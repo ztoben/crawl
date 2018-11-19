@@ -1,9 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import {initializeMap} from '../utilities';
+import {initializeMap, getViewingArea, getNewPosition, isArrayEqual} from '../utilities';
 import Tile from './components/tile';
-import getViewingArea from '../utilities/map/getViewingArea';
-import isArrayEqual from '../utilities/isArrayEqual';
-import {normalizePosition} from '../utilities/map/normalizePosition';
 import Info from './components/info';
 import Stats from './components/stats';
 import './style/app.scss';
@@ -25,23 +22,8 @@ export default class App extends Component {
   handleKeyDown = (event) => {
     const {selectedPosition} = this.state;
 
-    switch (event.key) {
-      case 'ArrowDown':
-        selectedPosition[0]++;
-        break;
-      case 'ArrowUp':
-        selectedPosition[0]--;
-        break;
-      case 'ArrowLeft':
-        selectedPosition[1]--;
-        break;
-      case 'ArrowRight':
-        selectedPosition[1]++;
-        break;
-    }
-
     this.setState({
-      selectedPosition: normalizePosition(selectedPosition)
+      selectedPosition: getNewPosition(selectedPosition, event)
     });
   };
 

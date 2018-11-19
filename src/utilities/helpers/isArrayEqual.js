@@ -1,4 +1,4 @@
-export default function isArrayEqual(value, other) {
+export function isArrayEqual(value, other) {
   // Get the value type
   var type = Object.prototype.toString.call(value);
 
@@ -56,4 +56,4 @@ export default function isArrayEqual(value, other) {
 
   // If nothing failed, return true
   return true;
-};
+}
