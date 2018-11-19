@@ -1,8 +1,5 @@
 import {BOUNDARY} from './tileTypes';
-import {getTile} from './getTile';
 
-export function isBoundary(map, position) {
-  const tile = getTile(map, position);
-
+export function isBoundary(tile) {
   return BOUNDARY === tile.type;
 }
