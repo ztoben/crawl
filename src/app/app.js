@@ -1,9 +1,9 @@
 import React, {Component, Fragment} from 'react';
-import {initializeMap, getViewingArea, getNewPosition, isArrayEqual} from '../utilities';
-import Tile from './components/tile';
+import {initializeMap, getNewPosition} from '../utilities';
 import Info from './components/info';
 import Stats from './components/stats';
 import './style/app.scss';
+import Map from './components/map';
 
 export default class App extends Component {
   constructor(props) {
@@ -11,54 +11,34 @@ export default class App extends Component {
 
     this.state = {
       map: initializeMap(),
-      selectedPosition: [7, 7]
+      selectedPosition: [7, 7],
     };
   }
 
   componentWillMount() {
-    document.addEventListener("keydown", this.handleKeyDown.bind(this));
+    document.addEventListener('keydown', this.handleKeyDown.bind(this));
   }
 
-  handleKeyDown = (event) => {
+  handleKeyDown = event => {
     const {selectedPosition, map} = this.state;
 
     this.setState({
-      selectedPosition: getNewPosition(map, selectedPosition, event)
-    });
-  };
-
-  renderTiles = () => {
-    const {map, selectedPosition} = this.state;
-
-    return getViewingArea(selectedPosition, map).map(row => {
-      return (
-        <div className="row">
-          {row.map(({type, index, content, style}) => {
-            return <Tile
-              type={type}
-              selected={isArrayEqual(selectedPosition, index)}
-              key={index.toString()}
-              content={content}
-              style={style}
-            />;
-          })}
-        </div>
-      );
+      selectedPosition: getNewPosition(map, selectedPosition, event),
     });
   };
 
   render() {
+    const {selectedPosition, map} = this.state;
+
     return (
       <Fragment>
-        <Info/>
+        <Info />
         <div className="app-container" onKeyDown={this.handleKeyDown}>
           <h1>c r a w l</h1>
-          <div className="map-container">
-            {this.renderTiles()}
-          </div>
+          <Map map={map} selectedPosition={selectedPosition} />
         </div>
-        <Stats/>
+        <Stats />
       </Fragment>
-  )
+    );
   }
 }
