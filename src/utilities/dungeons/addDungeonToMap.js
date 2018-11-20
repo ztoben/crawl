@@ -21,9 +21,9 @@ export function addDungeonToMap(map) {
     }
   }
 
-  for (let posX = x; posX < x + dungeon.width; posX++) {
-    for (let posY = y; posY < y + dungeon.height; posY++) {
-      setTileType(map[posX][posY], FLOOR);
+  for (let posX = x, dungeonPosX = 0; posX < x + dungeon.width; posX++, dungeonPosX++) {
+    for (let posY = y, dungeonPosY = 0; posY < y + dungeon.height; posY++, dungeonPosY++) {
+      if (dungeon.dungeonMap[dungeonPosX][dungeonPosY] === 'X') setTileType(map[posX][posY], FLOOR);
     }
   }
 }

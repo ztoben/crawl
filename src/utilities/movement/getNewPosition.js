@@ -28,6 +28,7 @@ export function getNewPosition(map, selectedPosition, event) {
 
   if (isBoundary(tile)) return selectedPosition;
   if (isWall(tile)) return selectedPosition;
+  /* TODO: Remove comment once the dungeons are connected with pathways */
   // if (isVoid(tile)) return selectedPosition;
 
   return normalizePosition(newPosition);
