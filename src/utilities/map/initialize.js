@@ -1,11 +1,10 @@
 import buildTileContent from '../tiles/buildTileContent';
 import {isOuterBoundary} from './isOuterBoundary';
-import {MAP_SIZE, MAX_NUMBER_DUNGEONS, MIN_NUMBER_DUNGEONS} from './constants';
+import {MAP_SIZE} from './constants';
 import {getStyle} from './getStyle';
 import {BOUNDARY, VOID} from '../tiles/constants';
-import {addDungeonToMap} from '../dungeons/addDungeonToMap';
-import any from '@travi/any';
-import {range} from '..';
+import {populateDungeons} from '../dungeons/populateDungeons';
+import {connectDungeons} from '../dungeons/connectDungeons';
 
 export function initializeMap() {
   const map = [];
@@ -29,13 +28,8 @@ export function initializeMap() {
     map.push(row);
   }
 
-  for (
-    let dungeons = 0;
-    dungeons < any.fromList(range(MAX_NUMBER_DUNGEONS, MIN_NUMBER_DUNGEONS));
-    dungeons++
-  ) {
-    addDungeonToMap(map);
-  }
+  populateDungeons(map);
+  connectDungeons(map);
 
   return map;
 }

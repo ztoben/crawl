@@ -40,7 +40,7 @@ export function flattenLayersToDungeon(layers) {
   let dungeon = [...topLayer];
 
   for (let x = 1; x < filledLayers.length; x++) {
-    /* TODO: Add other direction types and their implementations */
+    /* TODO: Add other direction types and their implementations, randomly choose direction */
     dungeon = addLayer(dungeon, filledLayers[x], boundingPoint, TOP_LEFT);
   }
 

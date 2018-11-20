@@ -6,6 +6,10 @@ import {MAP_SIZE} from '../map/constants';
 import {FLOOR} from '../tiles/constants';
 import {setTileType} from '../tiles/setTileType';
 
+function tileIsDungeon(dungeon, dungeonPosX, dungeonPosY) {
+  return dungeon.dungeonMap[dungeonPosX][dungeonPosY] === 'X';
+}
+
 export function addDungeonToMap(map) {
   const dungeon = buildDungeon();
   let isValidPosition = false;
@@ -23,7 +27,7 @@ export function addDungeonToMap(map) {
 
   for (let posX = x, dungeonPosX = 0; posX < x + dungeon.width; posX++, dungeonPosX++) {
     for (let posY = y, dungeonPosY = 0; posY < y + dungeon.height; posY++, dungeonPosY++) {
-      if (dungeon.dungeonMap[dungeonPosX][dungeonPosY] === 'X') setTileType(map[posX][posY], FLOOR);
+      if (tileIsDungeon(dungeon, dungeonPosX, dungeonPosY)) setTileType(map[posX][posY], FLOOR);
     }
   }
 }
