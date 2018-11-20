@@ -5,10 +5,15 @@ import '../style/tile.scss';
 class Tile extends Component {
   render() {
     const {selected, content, style} = this.props;
+    const selectedStyle = {
+      ...style,
+      fontSize: 16,
+      color: 'black',
+    };
 
     return (
       <div className={`tile${selected ? ' selected' : ''}`}>
-        <span style={style}>{selected ? '\u039E' : content}</span>
+        <span style={selected ? selectedStyle : style}>{selected ? '◯' : content}</span>
       </div>
     );
   }
@@ -18,7 +23,7 @@ Tile.propTypes = {
   type: string,
   selected: bool,
   content: string,
-  style: object
+  style: object,
 };
 
 export default Tile;

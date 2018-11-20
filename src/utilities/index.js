@@ -1,7 +1,13 @@
 export {initializeMap} from './map/initialize';
 export {getViewingArea} from './map/getViewingArea';
+
 export {getNewPosition} from './movement/getNewPosition';
+export {findStartingPosition} from './movement/findStartingPosition';
+
 export {isArrayEqual} from './helpers/isArrayEqual';
+export {range} from './helpers/range';
+
+export {getTile} from './tiles/getTile';
 export {isBoundary} from './tiles/isBoundary';
 export {isWall} from './tiles/isWall';
-export {getTile} from './tiles/getTile';
+export {isVoid} from './tiles/isVoid';

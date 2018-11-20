@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {initializeMap, getNewPosition} from '../utilities';
+import {initializeMap, getNewPosition, findStartingPosition} from '../utilities';
 import Info from './components/info';
 import Stats from './components/stats';
 import './style/app.scss';
@@ -9,9 +9,11 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
+    const map = initializeMap();
+
     this.state = {
-      map: initializeMap(),
-      selectedPosition: [7, 7],
+      map,
+      selectedPosition: findStartingPosition(map),
     };
   }
 

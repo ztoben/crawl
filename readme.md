@@ -5,10 +5,13 @@ A dungeon crawler written in React.js
 View the live version [here](http://ztoben-crawl.surge.sh/).
 
 ##### Roadmap:
-- [X] Generate a basic grid and movement system
-- [X] Implement arrow key movement
-- [ ] Generate random dungeons
-- [ ] Create movement rules, disallow moving through walls, etc.
+
+- [x] Generate a basic grid and movement system
+- [x] Implement arrow key movement
+- [x] Generate random dungeons
+- [x] Create movement rules, disallow moving through walls, etc.
+- [ ] Connect dungeons with doors and hallways
+- [ ] Fix possible infinite loop while placing dungeons
 - [ ] Add player stats
 - [ ] Randomly generated collectible items
 - [ ] Generate enemies with basic AI
