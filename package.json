@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@travi/any": "1.8.3",
+    "easystarjs": "0.4.3",
     "prop-types": "15.6.2",
     "react": "16.6.1"
   },

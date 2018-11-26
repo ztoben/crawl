@@ -29,10 +29,9 @@ export function initializeMap() {
   }
 
   const dungeons = populateDungeons(map);
-  connectDungeons(map, dungeons);
 
   return {
-    map,
+    map: connectDungeons(map, dungeons),
     dungeons,
   };
 }

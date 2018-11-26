@@ -1,6 +1,7 @@
 import {range, selectRandomCoordinate} from '..';
 import {TOP_LEFT, TOP_RIGHT} from './constants';
 import any from '@travi/any';
+import {findBoundingPoint} from './findBoundingPoint';
 
 function initializeDungeon(layer, boundingPoint) {
   const dungeon = [...layer];
@@ -9,16 +10,6 @@ function initializeDungeon(layer, boundingPoint) {
   dungeon[x][y] = 'B';
 
   return dungeon;
-}
-
-function findBoundingPoint(dungeon) {
-  for (let x = 0; x < dungeon.length; x++) {
-    for (let y = 0; y < dungeon[0].length; y++) {
-      if (dungeon[x][y] === 'B') return [x, y];
-    }
-  }
-
-  return [0, 0];
 }
 
 function addTopLeftLayer(dungeon, layer, boundingX, boundingY) {
@@ -111,5 +102,6 @@ export function flattenLayersToDungeon(layers) {
     width: dungeon.length,
     height: dungeon[0].length,
     dungeonMap: dungeon,
+    boundingPoint: findBoundingPoint(dungeon),
   };
 }
