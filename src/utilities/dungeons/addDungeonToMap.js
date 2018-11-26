@@ -7,7 +7,8 @@ import {FLOOR} from '../tiles/constants';
 import {setTileType} from '../tiles/setTileType';
 
 function tileIsDungeon(dungeon, dungeonPosX, dungeonPosY) {
-  return dungeon.dungeonMap[dungeonPosX][dungeonPosY] === 'X';
+  const tile = dungeon.dungeonMap[dungeonPosX][dungeonPosY];
+  return tile === 'X' || tile === 'B';
 }
 
 export function addDungeonToMap(map) {
