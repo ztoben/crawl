@@ -12,31 +12,39 @@ function tileIsDungeon(dungeon, dungeonPosX, dungeonPosY) {
 }
 
 export function addDungeonToMap(map) {
-  const dungeon = buildDungeon();
+  let dungeon = buildDungeon();
   let isValidPosition = false;
   let mapFull = false;
-  let numberOfTries = 0;
+  let dungeonTries = 0;
+  let positionTries = 0;
   let x = 1;
   let y = 1;
 
-  while (!isValidPosition && numberOfTries < 25) {
+  while (!isValidPosition && dungeonTries < 5) {
     isValidPosition = checkValidDungeonPlacement([x, y], map, dungeon);
 
     if (!isValidPosition) {
-      numberOfTries++;
+      positionTries++;
       x = any.fromList(range(MAP_SIZE - dungeon.width, 0));
       y = any.fromList(range(MAP_SIZE - dungeon.height, 0));
     }
+
+    if (positionTries === 25) {
+      positionTries = 0;
+      dungeonTries++;
+      dungeon = buildDungeon();
+    }
   }
 
-  if (numberOfTries === 25) mapFull = true;
+  if (dungeonTries === 5) mapFull = true;
 
-  if (!mapFull)
+  if (!mapFull) {
     for (let posX = x, dungeonPosX = 0; posX < x + dungeon.width; posX++, dungeonPosX++) {
       for (let posY = y, dungeonPosY = 0; posY < y + dungeon.height; posY++, dungeonPosY++) {
         if (tileIsDungeon(dungeon, dungeonPosX, dungeonPosY)) setTileType(map[posX][posY], FLOOR);
       }
     }
+  }
 
   return {
     mapFull,

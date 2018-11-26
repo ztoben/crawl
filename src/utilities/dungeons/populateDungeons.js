@@ -7,7 +7,7 @@ export function populateDungeons(map) {
 
   while (mapNotFull) {
     const {mapFull, position, dungeon} = addDungeonToMap(map);
-    dungeons.push({dungeon, position, id: any.string()});
+    if (!mapFull) dungeons.push({dungeon, position, id: any.string()});
     mapNotFull = !mapFull;
   }
 
