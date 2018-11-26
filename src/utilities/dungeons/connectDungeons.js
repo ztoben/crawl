@@ -1,3 +1,3 @@
-export function connectDungeons(map) {
+export function connectDungeons(map, dungeons) {
   return map;
 }

@@ -28,8 +28,11 @@ export function initializeMap() {
     map.push(row);
   }
 
-  populateDungeons(map);
-  connectDungeons(map);
+  const dungeons = populateDungeons(map);
+  connectDungeons(map, dungeons);
 
-  return map;
+  return {
+    map,
+    dungeons,
+  };
 }

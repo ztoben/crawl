@@ -9,10 +9,18 @@
   color: white;
   margin-right: 10px;
   border: $container-border;
+  flex-direction: column;
 
   h2 {
     height: 40px;
     margin: 20px 0;
     text-align: center;
+  }
+
+  .info {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    font-size: 18px;
   }
 }

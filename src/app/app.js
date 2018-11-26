@@ -9,10 +9,11 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    const map = initializeMap();
+    const {map, dungeons} = initializeMap();
 
     this.state = {
       map,
+      dungeons,
       selectedPosition: findStartingPosition(map),
     };
   }
@@ -30,11 +31,11 @@ export default class App extends Component {
   };
 
   render() {
-    const {selectedPosition, map} = this.state;
+    const {selectedPosition, map, dungeons} = this.state;
 
     return (
       <Fragment>
-        <Info />
+        <Info dungeons={dungeons} selectedPosition={selectedPosition} />
         <div className="app-container" onKeyDown={this.handleKeyDown}>
           <h1>c r a w l</h1>
           <Map map={map} selectedPosition={selectedPosition} />
