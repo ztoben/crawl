@@ -10,7 +10,7 @@ class Map extends Component {
     return getViewingArea(selectedPosition, map).map((row, idx) => {
       return (
         <div className="row" key={idx}>
-          {row.map(({type, index, content, style}) => {
+          {row.map(({type, index, content, style, discovered}) => {
             return (
               <Tile
                 type={type}
@@ -18,6 +18,7 @@ class Map extends Component {
                 key={index.toString()}
                 content={content}
                 style={style}
+                discovered={discovered}
               />
             );
           })}

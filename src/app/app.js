@@ -4,17 +4,19 @@ import Info from './components/info';
 import Stats from './components/stats';
 import './style/app.scss';
 import Map from './components/map';
+import {updateDiscoveredTiles} from '../utilities/map/updateDiscoveredTiles';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     const {map, dungeons} = initializeMap();
+    const selectedPosition = findStartingPosition(map);
 
     this.state = {
-      map,
+      map: updateDiscoveredTiles(map, selectedPosition),
       dungeons,
-      selectedPosition: findStartingPosition(map),
+      selectedPosition,
     };
   }
 
@@ -24,9 +26,11 @@ export default class App extends Component {
 
   handleKeyDown = event => {
     const {selectedPosition, map} = this.state;
+    const newPosition = getNewPosition(map, selectedPosition, event);
 
     this.setState({
-      selectedPosition: getNewPosition(map, selectedPosition, event),
+      selectedPosition: newPosition,
+      map: updateDiscoveredTiles(map, newPosition),
     });
   };
 

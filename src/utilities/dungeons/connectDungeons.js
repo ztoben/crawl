@@ -29,7 +29,7 @@ export function connectDungeons(map, dungeons) {
         path => {
           if (path) {
             path.forEach(({x, y}) => {
-              setTileType(map[x][y], FLOOR);
+              setTileType(map[x][y], FLOOR, [x, y], false);
             });
           }
         }

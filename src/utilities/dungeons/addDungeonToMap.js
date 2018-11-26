@@ -41,7 +41,8 @@ export function addDungeonToMap(map) {
   if (!mapFull) {
     for (let posX = x, dungeonPosX = 0; posX < x + dungeon.width; posX++, dungeonPosX++) {
       for (let posY = y, dungeonPosY = 0; posY < y + dungeon.height; posY++, dungeonPosY++) {
-        if (tileIsDungeon(dungeon, dungeonPosX, dungeonPosY)) setTileType(map[posX][posY], FLOOR);
+        if (tileIsDungeon(dungeon, dungeonPosX, dungeonPosY))
+          setTileType(map[posX][posY], FLOOR, [posX, posY], false);
       }
     }
   }
