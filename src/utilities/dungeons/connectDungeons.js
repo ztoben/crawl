@@ -31,7 +31,6 @@ export function connectDungeons(map, dungeons) {
             path.forEach(({x, y}) => {
               setTileType(map[x][y], FLOOR);
             });
-            console.log({path});
           }
         }
       );
