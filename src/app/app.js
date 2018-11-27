@@ -35,12 +35,11 @@ export default class App extends Component {
     const {selectedPosition, map} = this.state;
     const newPosition = getNewPosition(map, selectedPosition, event);
 
-    this.setState({
-      selectedPosition: newPosition,
-      map: positionDidChange(selectedPosition, newPosition)
-        ? updateDiscoveredTiles(map, newPosition)
-        : map,
-    });
+    if (positionDidChange(selectedPosition, newPosition))
+      this.setState({
+        selectedPosition: newPosition,
+        map: updateDiscoveredTiles(map, newPosition),
+      });
   };
 
   render() {
