@@ -64,37 +64,47 @@ function initializeMiniMap(miniMapArray, newMap, newPosition) {
   return newMiniMapArray;
 }
 
+function updateMapTile(newMap, x, y, tile, addedPercent) {
+  newMap[x][y] = updateTile(
+    newMap,
+    tile.type,
+    [x, y],
+    Math.max(addedPercent, tile.discoveredPercent)
+  );
+}
+
+function updateMiniMapArray(newMiniMapArray, x, y, tile, newPosition) {
+  newMiniMapArray[x * MAP_SIZE + y] = (
+    <Rect
+      x={y * 2}
+      y={x * 2}
+      width={2}
+      height={2}
+      fill={getMiniMapTileColor(tile, [x, y], newPosition)}
+      key={any.string()}
+    />
+  );
+}
+
+function updateMapTilesAndMiniMap(posX, posY, newMap, newMiniMapArray, newPosition) {
+  for (let x = normalize(posX - VIEW_DISTANCE); x < normalize(posX + VIEW_DISTANCE); x++) {
+    for (let y = normalize(posY - VIEW_DISTANCE); y < normalize(posY + VIEW_DISTANCE); y++) {
+      const addedPercent = getDiscoveredPercent(x, y, posX, posY);
+      const tile = newMap[x][y];
+
+      updateMapTile(newMap, x, y, tile, addedPercent);
+      updateMiniMapArray(newMiniMapArray, x, y, tile, newPosition);
+    }
+  }
+}
+
 export function updateMaps(map, miniMap, newPosition, oldPosition) {
   console.time('updateMaps');
   const newMap = [...map];
   const [posX, posY] = newPosition;
   const newMiniMapArray = initializeMiniMap(miniMap, newMap, newPosition);
 
-  for (let x = normalize(posX - VIEW_DISTANCE); x < normalize(posX + VIEW_DISTANCE); x++) {
-    for (let y = normalize(posY - VIEW_DISTANCE); y < normalize(posY + VIEW_DISTANCE); y++) {
-      const addedPercent = getDiscoveredPercent(x, y, posX, posY);
-      const tile = newMap[x][y];
-
-      newMap[x][y] = updateTile(
-        newMap,
-        tile.type,
-        [x, y],
-        Math.max(addedPercent, tile.discoveredPercent)
-      );
-
-      newMiniMapArray[x * MAP_SIZE + y] = (
-        <Rect
-          x={y * 2}
-          y={x * 2}
-          width={2}
-          height={2}
-          fill={getMiniMapTileColor(tile, [x, y], newPosition)}
-          key={any.string()}
-        />
-      );
-    }
-  }
-
+  updateMapTilesAndMiniMap(posX, posY, newMap, newMiniMapArray, newPosition);
   setSelected(newMap, newPosition, oldPosition);
 
   console.timeEnd('updateMaps');
