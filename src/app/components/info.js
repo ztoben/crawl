@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {array} from 'prop-types';
 import {FLOOR} from '../../utilities/tiles/constants';
 import '../style/info.scss';
+import MiniMap from './miniMap';
 
 class Info extends Component {
   render() {
@@ -23,6 +24,7 @@ class Info extends Component {
               <li>{`${percentDiscovered} percent explored`}</li>
               <li>{`Selected: [${selectedPosition}]`}</li>
             </ul>
+            <MiniMap map={map} selectedPosition={selectedPosition} />
           </div>
         ) : (
           <p>Loading...</p>

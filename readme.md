@@ -10,8 +10,9 @@ View the live version [here](http://ztoben-crawl.surge.sh/).
 - [x] Implement arrow key movement
 - [x] Generate random dungeons
 - [x] Create movement rules, disallow moving through walls, etc.
-- [ ] Connect dungeons with doors and hallways
-- [ ] Fix possible infinite loop while placing dungeons
+- [x] Connect dungeons with doors and hallways
+- [x] Fix possible infinite loop while placing dungeons
+- [ ] Show dungeon minimap
 - [ ] Add player stats
 - [ ] Randomly generated collectible items
 - [ ] Generate enemies with basic AI

@@ -26,8 +26,10 @@
   "dependencies": {
     "@travi/any": "1.8.3",
     "easystarjs": "0.4.3",
+    "konva": "2.5.1",
     "prop-types": "15.6.2",
-    "react": "16.6.1"
+    "react": "16.6.3",
+    "react-konva": "16.6.31"
   },
   "devDependencies": {
     "@babel/core": "7.1.5",
