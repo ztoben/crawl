@@ -20,17 +20,13 @@ export default class App extends Component {
 
   async componentDidMount() {
     const {map, dungeons} = await initializeMap();
-    console.log('component did initialize');
     const selectedPosition = findStartingPosition(map);
 
-    this.setState(
-      {
-        map: updateDiscoveredTiles(map, selectedPosition),
-        dungeons,
-        selectedPosition,
-      },
-      () => console.log('set state')
-    );
+    this.setState({
+      map: updateDiscoveredTiles(map, selectedPosition),
+      dungeons,
+      selectedPosition,
+    });
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
   }

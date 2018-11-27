@@ -33,8 +33,6 @@ export async function initializeMap() {
   const populatedDungeons = populateDungeons(map);
   const connectedMap = await connectDungeons(map, populatedDungeons);
 
-  console.log('connectedMap');
-
   return {
     map: connectedMap,
     dungeons: populatedDungeons,
