@@ -6,7 +6,7 @@ import MiniMap from './miniMap';
 
 class Info extends Component {
   renderDungeonInfo = () => {
-    const {dungeons, selectedPosition, map} = this.props;
+    const {dungeons, selectedPosition, map, miniMapArray} = this.props;
     const [discoveredFloor, totalFloor] = map.flat().reduce(
       (acc, {type, discoveredPercent}) => {
         if (type === FLOOR) {
@@ -26,7 +26,7 @@ class Info extends Component {
           <li>{`${percentDiscovered} percent explored`}</li>
           <li>{`Selected: [${selectedPosition[1]}, ${selectedPosition[0]}]`}</li>
         </ul>
-        <MiniMap map={map} selectedPosition={selectedPosition} />
+        <MiniMap miniMapArray={miniMapArray} />
       </Fragment>
     ) : null;
   };
@@ -45,6 +45,7 @@ Info.propTypes = {
   dungeons: array,
   selectedPosition: array,
   map: array,
+  miniMapArray: array,
 };
 
 export default Info;
