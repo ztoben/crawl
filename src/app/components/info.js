@@ -5,11 +5,20 @@ import '../style/info.scss';
 import MiniMap from './miniMap';
 
 class Info extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      totalFloor: props.map.flat().filter(tile => tile.type === FLOOR),
+    };
+  }
+
   renderDungeonInfo = () => {
     const {dungeons, selectedPosition, map} = this.props;
-    const tiles = map.flat();
-    const totalFloor = tiles.filter(tile => tile.type === FLOOR);
-    const discoveredFloor = tiles.filter(tile => tile.type === FLOOR && tile.discoveredPercent > 0);
+    const {totalFloor} = this.state;
+    const discoveredFloor = map
+      .flat()
+      .filter(tile => tile.type === FLOOR && tile.discoveredPercent > 0);
     const percentDiscovered = Number(
       ((discoveredFloor.length / totalFloor.length) * 100).toFixed(2)
     );

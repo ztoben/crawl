@@ -18,7 +18,7 @@ export default class App extends Component {
     };
   }
 
-  async componentWillMount() {
+  async componentDidMount() {
     const {map, dungeons} = await initializeMap();
     console.log('component did initialize');
     const selectedPosition = findStartingPosition(map);
