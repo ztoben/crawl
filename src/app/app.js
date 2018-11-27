@@ -42,7 +42,7 @@ export default class App extends Component {
 
     return (
       <Fragment>
-        <Info dungeons={dungeons} selectedPosition={selectedPosition} />
+        <Info map={map} dungeons={dungeons} selectedPosition={selectedPosition} />
         <div className="app-container" onKeyDown={this.handleKeyDown}>
           <h1>c r a w l</h1>
           <Map map={map} selectedPosition={selectedPosition} />
