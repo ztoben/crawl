@@ -1,5 +1,5 @@
 import {js as EasyStar} from 'easystarjs';
-import {setTileType} from '../tiles/setTileType';
+import {updateTile} from '../tiles/updateTile';
 import {FLOOR} from '../tiles/constants';
 
 export async function connectDungeons(map, dungeons) {
@@ -40,7 +40,7 @@ export async function connectDungeons(map, dungeons) {
     paths.forEach(path => {
       if (path)
         path.forEach(({x, y}) => {
-          setTileType(newMap, FLOOR, [x, y], 0);
+          newMap[x][y] = updateTile(newMap, FLOOR, [x, y], 0);
         });
     });
   });

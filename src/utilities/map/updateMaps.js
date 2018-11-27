@@ -1,5 +1,5 @@
 import {MAP_SIZE, VIEW_DISTANCE} from './constants';
-import {setTileType} from '../tiles/setTileType';
+import {updateTile} from '../tiles/updateTile';
 import {getTile, isArrayEqual} from '..';
 import {Rect} from 'react-konva';
 import React from 'react';
@@ -75,7 +75,12 @@ export function updateMaps(map, miniMap, newPosition, oldPosition) {
       const addedPercent = getDiscoveredPercent(x, y, posX, posY);
       const tile = newMap[x][y];
 
-      setTileType(newMap, tile.type, [x, y], Math.max(addedPercent, tile.discoveredPercent));
+      newMap[x][y] = updateTile(
+        newMap,
+        tile.type,
+        [x, y],
+        Math.max(addedPercent, tile.discoveredPercent)
+      );
 
       newMiniMapArray[x * MAP_SIZE + y] = (
         <Rect

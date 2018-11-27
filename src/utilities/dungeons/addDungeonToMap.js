@@ -3,7 +3,7 @@ import {buildDungeon} from './buildDungeon';
 import {checkValidDungeon, checkValidDungeonLocation} from './validators';
 import {MAP_SIZE} from '../map/constants';
 import {FLOOR} from '../tiles/constants';
-import {setTileType} from '../tiles/setTileType';
+import {updateTile} from '../tiles/updateTile';
 import {MAX_DUNGEON_TRIES, MAX_POSITION_TRIES} from './constants';
 
 function tileIsDungeon(dungeon, dungeonPosX, dungeonPosY) {
@@ -48,7 +48,7 @@ export function addDungeonToMap(map) {
     for (let posX = x, dungeonPosX = 0; posX < x + dungeon.width; posX++, dungeonPosX++) {
       for (let posY = y, dungeonPosY = 0; posY < y + dungeon.height; posY++, dungeonPosY++) {
         if (tileIsDungeon(dungeon, dungeonPosX, dungeonPosY))
-          setTileType(map, FLOOR, [posX, posY], 0);
+          map[posX][posY] = updateTile(map, FLOOR, [posX, posY], 0);
       }
     }
   }
