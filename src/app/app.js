@@ -21,7 +21,7 @@ export default class App extends Component {
   async componentDidMount() {
     const {map, dungeons} = await initializeMap();
     const selectedPosition = findStartingPosition(map);
-    const {newMap, newMiniMapArray} = updateMaps(map, selectedPosition);
+    const {newMap, newMiniMapArray} = updateMaps(map, [], selectedPosition);
 
     this.setState({
       map: newMap,
@@ -34,11 +34,16 @@ export default class App extends Component {
   }
 
   handleKeyDown = event => {
-    const {selectedPosition, map} = this.state;
+    const {selectedPosition, map, miniMapArray} = this.state;
     const newPosition = getNewPosition(map, selectedPosition, event);
 
     if (!isArrayEqual(selectedPosition, newPosition)) {
-      const {newMap, newMiniMapArray} = updateMaps(map, newPosition, selectedPosition);
+      const {newMap, newMiniMapArray} = updateMaps(
+        map,
+        miniMapArray,
+        newPosition,
+        selectedPosition
+      );
 
       this.setState({
         selectedPosition: newPosition,

@@ -4,6 +4,7 @@ import {getTile, isArrayEqual} from '..';
 import {Rect} from 'react-konva';
 import React from 'react';
 import {BOUNDARY, FLOOR, VOID} from '../tiles/constants';
+import any from '@travi/any';
 
 function normalize(value) {
   if (value < 0) return 0;
@@ -26,7 +27,7 @@ function setSelected(map, newPosition, oldPosition) {
   getTile(map, newPosition).selected = true;
 }
 
-function getTileColor(tile, currPosition, selectedPosition) {
+function getMiniMapTileColor(tile, currPosition, selectedPosition) {
   const {discoveredPercent} = tile;
 
   if (isArrayEqual(selectedPosition, currPosition)) return 'red';
@@ -38,40 +39,60 @@ function getTileColor(tile, currPosition, selectedPosition) {
   return '';
 }
 
-export function updateMaps(map, newPosition, oldPosition) {
-  const newMap = JSON.parse(JSON.stringify(map));
-  const [posX, posY] = newPosition;
-  const newMiniMapArray = [];
+function initializeMiniMap(miniMapArray, newMap, newPosition) {
+  const newMiniMapArray = [...miniMapArray];
 
-  for (let x = 0; x < MAP_SIZE; x++) {
-    for (let y = 0; y < MAP_SIZE; y++) {
+  if (newMiniMapArray.length === 0) {
+    for (let x = 0; x < MAP_SIZE; x++) {
+      for (let y = 0; y < MAP_SIZE; y++) {
+        const tile = newMap[x][y];
+
+        newMiniMapArray.push(
+          <Rect
+            x={y * 2}
+            y={x * 2}
+            width={2}
+            height={2}
+            fill={getMiniMapTileColor(tile, [x, y], newPosition)}
+            key={any.string()}
+          />
+        );
+      }
+    }
+  }
+
+  return newMiniMapArray;
+}
+
+export function updateMaps(map, miniMap, newPosition, oldPosition) {
+  console.time('updateMaps');
+  const newMap = [...map];
+  const [posX, posY] = newPosition;
+  const newMiniMapArray = initializeMiniMap(miniMap, newMap, newPosition);
+
+  for (let x = normalize(posX - VIEW_DISTANCE); x < normalize(posX + VIEW_DISTANCE); x++) {
+    for (let y = normalize(posY - VIEW_DISTANCE); y < normalize(posY + VIEW_DISTANCE); y++) {
+      const addedPercent = getDiscoveredPercent(x, y, posX, posY);
       const tile = newMap[x][y];
 
-      if (
-        x >= normalize(posX - VIEW_DISTANCE) &&
-        x < normalize(posX + VIEW_DISTANCE) &&
-        y >= normalize(posY - VIEW_DISTANCE) &&
-        y < normalize(posY + VIEW_DISTANCE)
-      ) {
-        const addedPercent = getDiscoveredPercent(x, y, posX, posY);
+      setTileType(newMap, tile.type, [x, y], Math.max(addedPercent, tile.discoveredPercent));
 
-        setTileType(newMap, tile.type, [x, y], Math.max(addedPercent, tile.discoveredPercent));
-      }
-
-      newMiniMapArray.push(
+      newMiniMapArray[x * MAP_SIZE + y] = (
         <Rect
           x={y * 2}
           y={x * 2}
           width={2}
           height={2}
-          fill={getTileColor(tile, [x, y], newPosition)}
-          key={`[${x},${y}]`}
+          fill={getMiniMapTileColor(tile, [x, y], newPosition)}
+          key={any.string()}
         />
       );
     }
   }
 
   setSelected(newMap, newPosition, oldPosition);
+
+  console.timeEnd('updateMaps');
 
   return {
     newMap,
