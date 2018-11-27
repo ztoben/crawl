@@ -1,8 +1,12 @@
-# CRAWL
+# C R A W L
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/ztoben/crawl.svg)](https://greenkeeper.io/)
 
 A dungeon crawler written in React.js
 
 View the live version [here](http://ztoben-crawl.surge.sh/).
+
+<img width="1162" alt="screen shot 2018-11-27 at 9 13 41 am" src="https://user-images.githubusercontent.com/4007345/49091127-cb65f000-f224-11e8-912d-72b7681b0e15.png">
 
 ##### Roadmap:
 
