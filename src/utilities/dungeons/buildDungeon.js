@@ -14,8 +14,8 @@ export function buildDungeon() {
 
   for (let x = 0; x < numberOfLayers; x++) {
     layers.push({
-      width: any.fromList(range(MIN_DUNGEON_WIDTH, MAX_DUNGEON_WIDTH - MIN_DUNGEON_WIDTH)),
-      height: any.fromList(range(MIN_DUNGEON_HEIGHT, MAX_DUNGEON_HEIGHT - MIN_DUNGEON_HEIGHT)),
+      width: any.integer({min: MIN_DUNGEON_WIDTH, max: MAX_DUNGEON_WIDTH - MIN_DUNGEON_WIDTH}),
+      height: any.integer({min: MIN_DUNGEON_HEIGHT, max: MAX_DUNGEON_HEIGHT - MIN_DUNGEON_HEIGHT}),
     });
   }
 

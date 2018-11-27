@@ -35,6 +35,7 @@ class MiniMap extends Component {
                     width={2}
                     height={2}
                     fill={getTileColor(tile, x, y, selectedPosition)}
+                    key={`[${x}${y}]`}
                   />
                 );
               });

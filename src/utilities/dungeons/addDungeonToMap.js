@@ -1,7 +1,6 @@
 import any from '@travi/any';
 import {buildDungeon} from './buildDungeon';
-import {checkValidDungeonPlacement} from './checkValidDungeonPlacement';
-import {range} from '..';
+import {checkValidDungeon, checkValidDungeonLocation} from './validators';
 import {MAP_SIZE} from '../map/constants';
 import {FLOOR} from '../tiles/constants';
 import {setTileType} from '../tiles/setTileType';
@@ -14,6 +13,7 @@ function tileIsDungeon(dungeon, dungeonPosX, dungeonPosY) {
 
 export function addDungeonToMap(map) {
   let dungeon = buildDungeon();
+  let isValidDungeon = checkValidDungeon(dungeon);
   let isValidPosition = false;
   let mapFull = false;
   let dungeonTries = 0;
@@ -21,13 +21,18 @@ export function addDungeonToMap(map) {
   let x = 1;
   let y = 1;
 
+  while (!isValidDungeon) {
+    dungeon = buildDungeon();
+    isValidDungeon = checkValidDungeon(dungeon);
+  }
+
   while (!isValidPosition && dungeonTries < MAX_DUNGEON_TRIES) {
-    isValidPosition = checkValidDungeonPlacement([x, y], map, dungeon);
+    isValidPosition = checkValidDungeonLocation([x, y], map, dungeon);
 
     if (!isValidPosition) {
       positionTries++;
-      x = any.fromList(range(MAP_SIZE - dungeon.width, 0));
-      y = any.fromList(range(MAP_SIZE - dungeon.height, 0));
+      x = any.integer({min: 0, max: MAP_SIZE - dungeon.width});
+      y = any.integer({min: 0, max: MAP_SIZE - dungeon.height});
     }
 
     if (positionTries === MAX_POSITION_TRIES) {
