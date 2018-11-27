@@ -9,7 +9,9 @@ class Info extends Component {
     const tiles = map.flat();
     const totalFloor = tiles.filter(tile => tile.type === FLOOR);
     const discoveredFloor = tiles.filter(tile => tile.type === FLOOR && tile.discoveredPercent > 0);
-    const percentDiscovered = Number((discoveredFloor.length / totalFloor.length).toFixed(2));
+    const percentDiscovered = Number(
+      ((discoveredFloor.length / totalFloor.length) * 100).toFixed(2)
+    );
 
     return (
       <div className="info-container">
