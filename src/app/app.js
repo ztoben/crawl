@@ -11,17 +11,27 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    const {map, dungeons} = initializeMap();
-    const selectedPosition = findStartingPosition(map);
-
     this.state = {
-      map: updateDiscoveredTiles(map, selectedPosition),
-      dungeons,
-      selectedPosition,
+      map: [],
+      dungeons: [],
+      selectedPosition: [],
     };
   }
 
-  componentWillMount() {
+  async componentWillMount() {
+    const {map, dungeons} = await initializeMap();
+    console.log('component did initialize');
+    const selectedPosition = findStartingPosition(map);
+
+    this.setState(
+      {
+        map: updateDiscoveredTiles(map, selectedPosition),
+        dungeons,
+        selectedPosition,
+      },
+      () => console.log('set state')
+    );
+
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
   }
 

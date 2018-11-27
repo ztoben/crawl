@@ -2,16 +2,17 @@ import {js as EasyStar} from 'easystarjs';
 import {setTileType} from '../tiles/setTileType';
 import {FLOOR} from '../tiles/constants';
 
-export function connectDungeons(map, dungeons) {
-  const matrix = map.map(row => {
+export async function connectDungeons(map, dungeons) {
+  const newMap = JSON.parse(JSON.stringify(map));
+  const matrix = newMap.map(row => {
     return row.map(() => 0);
   });
 
   const easystar = new EasyStar();
   easystar.setGrid(matrix);
-  easystar.setAcceptableTiles([0]);
+  easystar.setAcceptableTiles(0);
 
-  dungeons.forEach(({dungeon, position}, index) => {
+  const pathsPromise = dungeons.map(({dungeon, position}, index) => {
     if (index < dungeons.length - 1) {
       const nextDungeon = dungeons[index + 1];
       const {boundingPoint: boundingPointCurr} = dungeon;
@@ -21,22 +22,28 @@ export function connectDungeons(map, dungeons) {
       const [currBoundingX, currBoundingY] = boundingPointCurr;
       const [nextBoundingX, nextBoundingY] = boundingPointNext;
 
-      easystar.findPath(
-        currX + currBoundingX,
-        currY + currBoundingY,
-        nextX + nextBoundingX,
-        nextY + nextBoundingY,
-        path => {
-          if (path) {
-            path.forEach(({x, y}) => {
-              setTileType(map, FLOOR, [x, y], 0);
-            });
-          }
-        }
-      );
-      easystar.calculate();
+      return new Promise(resolve => {
+        easystar.findPath(
+          currX + currBoundingX,
+          currY + currBoundingY,
+          nextX + nextBoundingX,
+          nextY + nextBoundingY,
+          path => resolve(path)
+        );
+      });
     }
   });
 
-  return map;
+  await easystar.calculate();
+
+  await Promise.all(pathsPromise).then(paths => {
+    paths.forEach(path => {
+      if (path)
+        path.forEach(({x, y}) => {
+          setTileType(newMap, FLOOR, [x, y], 0);
+        });
+    });
+  });
+
+  return newMap;
 }

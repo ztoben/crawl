@@ -18,7 +18,6 @@ function getDiscoveredPercent(x, y, posX, posY) {
 }
 
 export function updateDiscoveredTiles(map, position) {
-  let newMap = [...map];
   const [posX, posY] = position;
 
   for (let x = normalize(posX - VIEW_DISTANCE); x < normalize(posX + VIEW_DISTANCE); x++) {
@@ -26,9 +25,9 @@ export function updateDiscoveredTiles(map, position) {
       const addedPercent = getDiscoveredPercent(x, y, posX, posY);
       const tile = map[x][y];
 
-      newMap = setTileType(newMap, tile.type, [x, y], addedPercent + tile.discoveredPercent);
+      setTileType(map, tile.type, [x, y], addedPercent + tile.discoveredPercent);
     }
   }
 
-  return newMap;
+  return map;
 }

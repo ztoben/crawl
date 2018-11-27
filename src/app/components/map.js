@@ -27,8 +27,16 @@ class Map extends Component {
     });
   };
 
+  renderLoading = () => {
+    return <span className="loading">Loading...</span>;
+  };
+
   render() {
-    return <div className="map-container">{this.renderTiles()}</div>;
+    const {map} = this.props;
+
+    return (
+      <div className="map-container">{map.length ? this.renderTiles() : this.renderLoading()}</div>
+    );
   }
 }
 

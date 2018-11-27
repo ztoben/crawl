@@ -6,7 +6,7 @@ import {BOUNDARY, VOID} from '../tiles/constants';
 import {populateDungeons} from '../dungeons/populateDungeons';
 import {connectDungeons} from '../dungeons/connectDungeons';
 
-export function initializeMap() {
+export async function initializeMap() {
   const map = [];
 
   for (let x = 0; x < MAP_SIZE; x++) {
@@ -30,10 +30,13 @@ export function initializeMap() {
     map.push(row);
   }
 
-  const dungeons = populateDungeons(map);
+  const populatedDungeons = populateDungeons(map);
+  const connectedMap = await connectDungeons(map, populatedDungeons);
+
+  console.log('connectedMap');
 
   return {
-    map: connectDungeons(map, dungeons),
-    dungeons,
+    map: connectedMap,
+    dungeons: populatedDungeons,
   };
 }
