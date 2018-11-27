@@ -5,6 +5,7 @@ import Stats from './components/stats';
 import './style/app.scss';
 import Map from './components/map';
 import {updateDiscoveredTiles} from '../utilities/map/updateDiscoveredTiles';
+import {positionDidChange} from '../utilities/movement/positionDidChange';
 
 export default class App extends Component {
   constructor(props) {
@@ -30,7 +31,9 @@ export default class App extends Component {
 
     this.setState({
       selectedPosition: newPosition,
-      map: updateDiscoveredTiles(map, newPosition),
+      map: positionDidChange(selectedPosition, newPosition)
+        ? updateDiscoveredTiles(map, newPosition)
+        : map,
     });
   };
 

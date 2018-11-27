@@ -16,14 +16,14 @@ export function initializeMap() {
       const boundary = isOuterBoundary([x, y]);
       const type = boundary ? BOUNDARY : VOID;
       const index = [x, y];
-      const discovered = false;
+      const discoveredPercent = 0;
 
       row.push({
         type,
         index,
-        content: buildTileContent(type, index, discovered),
-        style: getStyle(type),
-        discovered,
+        content: buildTileContent(type, index),
+        style: getStyle(type, discoveredPercent),
+        discoveredPercent,
       });
     }
 

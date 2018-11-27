@@ -3,14 +3,24 @@ import {BOUNDARY, FLOOR} from '../tiles/constants';
 const boundaryStyle = {
   fontSize: 18,
   fontWeight: 'bold',
+  opacity: 100,
 };
 const floorStyle = {
   fontSize: 38,
 };
 
-export function getStyle(type) {
-  if (BOUNDARY === type) return boundaryStyle;
-  if (FLOOR === type) return floorStyle;
+function getFloorStyle(discoveredPercent) {
+  return {
+    ...floorStyle,
+    opacity: discoveredPercent,
+  };
+}
 
-  return {};
+export function getStyle(type, discoveredPercent) {
+  if (BOUNDARY === type) return boundaryStyle;
+  if (FLOOR === type) return getFloorStyle(discoveredPercent);
+
+  return {
+    opacity: discoveredPercent,
+  };
 }
