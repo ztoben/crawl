@@ -1,4 +1,4 @@
-# CRAWL
+# C R A W L
 
 A dungeon crawler written in React.js
 
