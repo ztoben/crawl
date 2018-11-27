@@ -8,16 +8,15 @@ class Info extends Component {
   renderDungeonInfo = () => {
     const {dungeons, selectedPosition, map} = this.props;
     const [discoveredFloor, totalFloor] = map.flat().reduce(
-      (acc, tile) => {
-        if (tile.type === FLOOR) {
+      (acc, {type, discoveredPercent}) => {
+        if (type === FLOOR) {
           acc[1]++;
-          if (tile.discoveredPercent > 0) acc[0]++;
+          if (discoveredPercent > 0) acc[0]++;
         }
         return acc;
       },
       [0, 0]
     );
-
     const percentDiscovered = Number(((discoveredFloor / totalFloor) * 100).toFixed(2));
 
     return dungeons && dungeons.length ? (
@@ -25,7 +24,7 @@ class Info extends Component {
         <ul>
           <li>{`${dungeons.length} dungeons generated`}</li>
           <li>{`${percentDiscovered} percent explored`}</li>
-          <li>{`Selected: [${selectedPosition}]`}</li>
+          <li>{`Selected: [${selectedPosition[1]}, ${selectedPosition[0]}]`}</li>
         </ul>
         <MiniMap map={map} selectedPosition={selectedPosition} />
       </Fragment>

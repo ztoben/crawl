@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {array} from 'prop-types';
-import {getViewingArea, isArrayEqual} from '../../utilities';
+import {getViewingArea} from '../../utilities';
 import Tile from './tile';
 
 class Map extends Component {
@@ -10,11 +10,11 @@ class Map extends Component {
     return getViewingArea(selectedPosition, map).map((row, idx) => {
       return (
         <div className="row" key={idx}>
-          {row.map(({type, index, content, style, discovered}) => {
+          {row.map(({type, index, content, style, discovered, selected}) => {
             return (
               <Tile
                 type={type}
-                selected={isArrayEqual(selectedPosition, index)}
+                selected={selected}
                 key={index.toString()}
                 content={content}
                 style={style}

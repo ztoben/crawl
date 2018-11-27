@@ -1,11 +1,10 @@
 import React, {Component, Fragment} from 'react';
-import {initializeMap, getNewPosition, findStartingPosition} from '../utilities';
+import {initializeMap, getNewPosition, findStartingPosition, isArrayEqual} from '../utilities';
+import {updateMap} from '../utilities/map/updateMap';
 import Info from './components/info';
 import Stats from './components/stats';
-import './style/app.scss';
 import Map from './components/map';
-import {updateDiscoveredTiles} from '../utilities/map/updateDiscoveredTiles';
-import {positionDidChange} from '../utilities/movement/positionDidChange';
+import './style/app.scss';
 
 export default class App extends Component {
   constructor(props) {
@@ -23,7 +22,7 @@ export default class App extends Component {
     const selectedPosition = findStartingPosition(map);
 
     this.setState({
-      map: updateDiscoveredTiles(map, selectedPosition),
+      map: updateMap(map, selectedPosition),
       dungeons,
       selectedPosition,
     });
@@ -35,11 +34,12 @@ export default class App extends Component {
     const {selectedPosition, map} = this.state;
     const newPosition = getNewPosition(map, selectedPosition, event);
 
-    if (positionDidChange(selectedPosition, newPosition))
+    if (!isArrayEqual(selectedPosition, newPosition)) {
       this.setState({
         selectedPosition: newPosition,
-        map: updateDiscoveredTiles(map, newPosition),
+        map: updateMap(map, newPosition, selectedPosition),
       });
+    }
   };
 
   render() {
