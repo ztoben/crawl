@@ -1,9 +1,15 @@
+.app-container {
+  justify-content: center;
+}
+
 .start-container {
-  height: 100%;
   display: flex;
-  align-content: center;
   align-items: center;
   justify-content: center;
+
+  h3 {
+    margin: 0;
+  }
 
   a {
     position: relative;

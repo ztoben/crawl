@@ -11,3 +11,5 @@ export {getTile} from './tiles/getTile';
 export {isBoundary} from './tiles/isBoundary';
 export {isWall} from './tiles/isWall';
 export {isVoid} from './tiles/isVoid';
+
+export {getRandomName} from './player/getRandomName';

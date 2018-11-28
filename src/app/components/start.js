@@ -8,7 +8,9 @@ class Start extends Component {
       <div className="app-container">
         <h1>c r a w l</h1>
         <div className="start-container">
-          <Link to="/game/">N E W _ G A M E</Link>
+          <Link to="/game/">
+            <h3>start a new game</h3>
+          </Link>
         </div>
       </div>
     );

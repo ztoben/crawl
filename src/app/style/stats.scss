@@ -35,5 +35,18 @@
       text-decoration: none;
       width: calc(100% - 80px);
     }
+
+    .stats-table-container {
+      width: 100%;
+
+      .stats-table {
+        width: 100%;
+
+        td {
+          border: $inner-border;
+          text-align: center;
+        }
+      }
+    }
   }
 }
