@@ -4,9 +4,7 @@ export {getViewingArea} from './map/getViewingArea';
 export {getNewPosition} from './movement/getNewPosition';
 export {findStartingPosition} from './movement/findStartingPosition';
 
-export {isArrayEqual} from './helpers/isArrayEqual';
-export {range} from './helpers/range';
-export {selectRandomCoordinate} from './helpers/selectRandomCoordinate';
+export {isArrayEqual, range, selectRandomCoordinate, normalizeCoordinate} from './helpers';
 
 export {getTile} from './tiles/getTile';
 export {isBoundary} from './tiles/isBoundary';

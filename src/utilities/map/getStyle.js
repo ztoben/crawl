@@ -6,7 +6,8 @@ const boundaryStyle = {
   opacity: 100,
 };
 const floorStyle = {
-  fontSize: 38,
+  fontSize: 40,
+  paddingTop: 4,
 };
 
 function getFloorStyle(discoveredPercent) {
