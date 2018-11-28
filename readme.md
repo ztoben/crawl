@@ -16,8 +16,11 @@ View the live version [here](http://ztoben-crawl.surge.sh/).
 - [x] Create movement rules, disallow moving through walls, etc.
 - [x] Connect dungeons with doors and hallways
 - [x] Fix possible infinite loop while placing dungeons
-- [ ] Show dungeon minimap
-- [ ] Add player stats
+- [x] Show dungeon minimap
+- [x] Add a starting screen
+- [ ] New character screen
+- [ ] Implement [Undux](https://github.com/bcherny/undux) for state management
+- [ ] Add player info (name, class, stats, etc.)
 - [ ] Randomly generated collectible items
 - [ ] Generate enemies with basic AI
 - [ ] Use a key and lock system to keep players from progressing too quickly
