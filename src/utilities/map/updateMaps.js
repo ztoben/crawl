@@ -1,10 +1,11 @@
-import {MAP_SIZE, VIEW_DISTANCE} from './constants';
+import React from 'react';
+import {Rect} from 'react-konva';
+import any from '@travi/any';
+import {toggleSelected} from '../tiles/toggleSelected';
 import {updateTile} from '../tiles/updateTile';
 import {getTile, isArrayEqual} from '..';
-import {Rect} from 'react-konva';
-import React from 'react';
+import {MAP_SIZE, VIEW_DISTANCE} from './constants';
 import {BOUNDARY, FLOOR, VOID} from '../tiles/constants';
-import any from '@travi/any';
 
 function normalize(value) {
   if (value < 0) return 0;
@@ -23,8 +24,8 @@ function getDiscoveredPercent(x, y, posX, posY) {
 }
 
 function setSelected(map, newPosition, oldPosition) {
-  if (oldPosition) getTile(map, oldPosition).selected = false;
-  getTile(map, newPosition).selected = true;
+  if (oldPosition) toggleSelected(getTile(map, oldPosition));
+  toggleSelected(getTile(map, newPosition));
 }
 
 function getMiniMapTileColor(tile, currPosition, selectedPosition) {
@@ -93,7 +94,7 @@ function updateMapTilesAndMiniMap(posX, posY, newMap, newMiniMapArray, newPositi
       const tile = newMap[x][y];
 
       updateMapTile(newMap, x, y, tile, addedPercent);
-      updateMiniMapArray(newMiniMapArray, x, y, tile, newPosition);
+      updateMiniMapArray(newMiniMapArray, x, y, newMap[x][y], newPosition);
     }
   }
 }

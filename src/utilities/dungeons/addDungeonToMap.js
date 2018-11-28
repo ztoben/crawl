@@ -11,28 +11,39 @@ function tileIsDungeon(dungeon, dungeonPosX, dungeonPosY) {
   return tile === 'X' || tile === 'B';
 }
 
-export function addDungeonToMap(map) {
+function getRandomCoordinate(dungeon) {
+  let x = any.integer({min: 0, max: MAP_SIZE - dungeon.width});
+  let y = any.integer({min: 0, max: MAP_SIZE - dungeon.height});
+
+  return [x, y];
+}
+
+function getValidDungeon() {
   let dungeon = buildDungeon();
   let isValidDungeon = checkValidDungeon(dungeon);
-  let isValidPosition = false;
-  let mapFull = false;
-  let dungeonTries = 0;
-  let positionTries = 0;
-  let x = 1;
-  let y = 1;
 
   while (!isValidDungeon) {
     dungeon = buildDungeon();
     isValidDungeon = checkValidDungeon(dungeon);
   }
 
+  return dungeon;
+}
+
+export function addDungeonToMap(map) {
+  let dungeon = getValidDungeon();
+  let isValidPosition = false;
+  let mapFull = false;
+  let dungeonTries = 0;
+  let positionTries = 0;
+  let [x, y] = getRandomCoordinate(dungeon);
+
   while (!isValidPosition && dungeonTries < MAX_DUNGEON_TRIES) {
     isValidPosition = checkValidDungeonLocation([x, y], map, dungeon);
 
     if (!isValidPosition) {
       positionTries++;
-      x = any.integer({min: 0, max: MAP_SIZE - dungeon.width});
-      y = any.integer({min: 0, max: MAP_SIZE - dungeon.height});
+      [x, y] = getRandomCoordinate(dungeon);
     }
 
     if (positionTries === MAX_POSITION_TRIES) {
