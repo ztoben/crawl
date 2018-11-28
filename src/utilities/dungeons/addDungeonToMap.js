@@ -49,7 +49,7 @@ export function addDungeonToMap(map) {
     if (positionTries === MAX_POSITION_TRIES) {
       positionTries = 0;
       dungeonTries++;
-      dungeon = buildDungeon();
+      dungeon = getValidDungeon();
     }
   }
 
