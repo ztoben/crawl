@@ -5,6 +5,7 @@ import {array} from 'prop-types';
 const miniMapStyle = {
   marginRight: 'auto',
   marginLeft: 'auto',
+  marginBottom: 15,
 };
 
 class MiniMap extends Component {

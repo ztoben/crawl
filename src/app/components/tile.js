@@ -7,13 +7,13 @@ class Tile extends Component {
     const {selected, content, style} = this.props;
     const selectedStyle = {
       ...style,
-      fontSize: 16,
-      color: 'black',
+      color: 'blue',
+      fontWeight: 'bold',
     };
 
     return (
       <div className={`tile${selected ? ' selected' : ''}`}>
-        <span style={selected ? selectedStyle : style}>{selected ? '◯' : content}</span>
+        <span style={selected ? selectedStyle : style}>{content}</span>
       </div>
     );
   }

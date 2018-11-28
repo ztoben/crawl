@@ -30,7 +30,7 @@ function setSelected(map, newPosition, oldPosition) {
 function getMiniMapTileColor(tile, currPosition, selectedPosition) {
   const {discoveredPercent} = tile;
 
-  if (isArrayEqual(selectedPosition, currPosition)) return 'red';
+  if (isArrayEqual(selectedPosition, currPosition)) return 'blue';
   if (tile.type === BOUNDARY) return 'white';
   if (discoveredPercent === 0) return 'lightgray';
   if (tile.type === FLOOR) return 'gray';
