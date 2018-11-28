@@ -1,5 +1,6 @@
 export {initializeMap} from './map/initialize';
 export {getViewingArea} from './map/getViewingArea';
+export {updateMaps} from './map/updateMaps';
 
 export {getNewPosition} from './movement/getNewPosition';
 export {findStartingPosition} from './movement/findStartingPosition';

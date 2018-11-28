@@ -14,7 +14,7 @@ body {
   margin: 0;
 }
 
-#app {
+#app > div {
   display: flex;
   width: 100vw;
   flex-direction: row;
@@ -35,28 +35,5 @@ body {
     text-align: center;
     height: $header-height;
     margin: 20px 0;
-  }
-}
-
-.map-container {
-  width: 100%;
-  height: 100%;
-  position: relative;
-
-  .row {
-    display: flex;
-    align-content: center;
-    height: calc(calc(#{$size} - #{$header-height} * 2 + 1px) /#{$view-units});
-  }
-
-  .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    position: absolute;
-    height: calc(100% - 50px);
-    width: 100%;
-    font-size: 24px;
   }
 }
