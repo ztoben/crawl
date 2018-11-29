@@ -20,9 +20,9 @@
   a {
     position: relative;
     padding: 20px;
-    background-color: black;
+    background-color: darkgray;
     border: $container-border;
-    color: white;
+    color: black;
     text-decoration: none;
     width: 200px;
 
@@ -34,9 +34,9 @@
 
   button {
     padding: 20px;
-    background-color: black;
+    background-color: darkgray;
     border: $container-border;
-    color: white;
+    color: black;
     text-decoration: none;
     width: 248px;
     margin-bottom: 50px;
@@ -47,7 +47,8 @@
     width: 200px;
     padding: 20px;
     border: $container-border;
-    background-color: darkgray;
+    background-color: black;
+    color: white;
     cursor: default;
   }
 
@@ -55,7 +56,8 @@
     width: 248px;
     padding: 20px;
     border: $container-border;
-    background-color: darkgray;
+    background-color: black;
+    color: white;
     border-radius: 0;
     -webkit-appearance: none;
     -webkit-border-radius: 0;
