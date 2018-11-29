@@ -14,6 +14,7 @@
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 5px;
+    outline: none;
   }
 
   a {
@@ -47,7 +48,6 @@
     padding: 20px;
     border: $container-border;
     background-color: darkgray;
-    outline: none;
     cursor: default;
   }
 
@@ -56,7 +56,6 @@
     padding: 20px;
     border: $container-border;
     background-color: darkgray;
-    outline: none;
     border-radius: 0;
     -webkit-appearance: none;
     -webkit-border-radius: 0;
