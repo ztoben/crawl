@@ -6,7 +6,7 @@ A dungeon crawler written in React.js
 
 View the live version [here](http://ztoben-crawl.surge.sh/).
 
-<img width="1158" alt="screen shot 2018-11-28 at 3 04 32 pm" src="https://user-images.githubusercontent.com/4007345/49182324-97bbc080-f31f-11e8-932c-16582012117b.png">
+<img width="1159" alt="screen shot 2018-11-29 at 7 37 29 am" src="https://user-images.githubusercontent.com/4007345/49228959-224d0000-f3b2-11e8-8768-5323c3fbb8b4.png">
 
 ##### Roadmap:
 
