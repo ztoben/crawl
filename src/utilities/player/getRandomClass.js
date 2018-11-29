@@ -1,6 +1,6 @@
-import {MAGE, ROGUE, THIEF, WARRIOR} from './classes';
+import {DRUID, CLERIC, ROGUE, THIEF, PALADIN} from './classes';
 import any from '@travi/any';
 
 export function getRandomClass() {
-  return any.fromList([WARRIOR, THIEF, ROGUE, MAGE]);
+  return any.fromList([DRUID, THIEF, ROGUE, CLERIC, PALADIN]);
 }

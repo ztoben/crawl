@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Store from '../store';
 import {getRandomClass, getRandomName} from '../../utilities';
-import {MAGE, ROGUE, THIEF, WARRIOR} from '../../utilities/player/classes';
+import {DRUID, CLERIC, ROGUE, THIEF, PALADIN} from '../../utilities/player/classes';
 import '../style/newGame.scss';
 
 class NewGame extends Component {
@@ -35,10 +35,11 @@ class NewGame extends Component {
           <h2>c h a r a c t e r</h2>
           <input value={store.get('name')} onChange={this.handleNameChange} />
           <select value={store.get('class')} onChange={this.handleClassChange}>
-            <option value={WARRIOR}>{WARRIOR}</option>
-            <option value={MAGE}>{MAGE}</option>
-            <option value={THIEF}>{THIEF}</option>
+            <option value={PALADIN}>{PALADIN}</option>
             <option value={ROGUE}>{ROGUE}</option>
+            <option value={THIEF}>{THIEF}</option>
+            <option value={DRUID}>{DRUID}</option>
+            <option value={CLERIC}>{CLERIC}</option>
           </select>
           <button onClick={this.randomizeCharacter}>randomize</button>
           <Link to="/game/">
