@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Store from '../store';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
 import '../style/stats.scss';
 
 class Stats extends Component {
@@ -56,7 +55,5 @@ class Stats extends Component {
     );
   }
 }
-
-Stats.propTypes = {};
 
 export default Store.withStore(Stats);

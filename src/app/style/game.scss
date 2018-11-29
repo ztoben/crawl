@@ -8,7 +8,7 @@
   .row {
     display: flex;
     align-content: center;
-    height: calc(calc(#{$size} - #{$header-height} * 2 + 1px) /#{$view-units});
+    height: calc(calc(#{$size} - #{$header-height} * 2 + 1px) / #{$view-units});
   }
 
   .loading {

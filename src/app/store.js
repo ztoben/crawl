@@ -1,16 +1,15 @@
 import {withReduxDevtools, createConnectedStore} from 'undux';
-import {getRandomName} from '../utilities';
-import {WARRIOR} from '../utilities/player/classes';
+import {getRandomClass, getRandomName} from '../utilities';
 
 const initialState = {
   name: getRandomName(),
-  class: WARRIOR,
-  hp: 100,
-  mp: 50,
-  atk: 15,
-  def: 10,
-  satk: 7,
-  sdef: 3,
+  class: getRandomClass(),
+  hp: 0,
+  mp: 0,
+  atk: 0,
+  def: 0,
+  satk: 0,
+  sdef: 0,
   items: [],
 };
 

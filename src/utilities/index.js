@@ -13,3 +13,4 @@ export {isWall} from './tiles/isWall';
 export {isVoid} from './tiles/isVoid';
 
 export {getRandomName} from './player/getRandomName';
+export {getRandomClass} from './player/getRandomClass';
