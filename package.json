@@ -24,7 +24,7 @@
     }
   },
   "dependencies": {
-    "@travi/any": "1.8.3",
+    "@travi/any": "1.8.4",
     "easystarjs": "0.4.3",
     "konva": "2.5.1",
     "prop-types": "15.6.2",
