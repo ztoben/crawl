@@ -1,8 +1,8 @@
-import {createConnectedStore} from 'undux';
+import {withReduxDevtools, createConnectedStore} from 'undux';
 import {getRandomName} from '../utilities';
 import {WARRIOR} from '../utilities/player/classes';
 
-export default createConnectedStore({
+const initialState = {
   name: getRandomName(),
   class: WARRIOR,
   hp: 100,
@@ -12,4 +12,6 @@ export default createConnectedStore({
   satk: 7,
   sdef: 3,
   items: [],
-});
+};
+
+export default createConnectedStore(initialState, withReduxDevtools);
