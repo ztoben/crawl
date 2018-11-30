@@ -52,20 +52,7 @@
     cursor: default;
   }
 
-  select {
-    width: 248px;
-    padding: 20px;
-    border: $container-border;
-    background-color: black;
-    color: white;
-    border-radius: 0;
-    -webkit-appearance: none;
-    -webkit-border-radius: 0;
-    text-align: center;
-    text-align-last: center;
-  }
-
-  .class-container {
+  .class-select-container {
     width: 248px;
     display: flex;
     flex-direction: column;

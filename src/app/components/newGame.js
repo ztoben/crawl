@@ -67,7 +67,7 @@ class NewGame extends Component {
             onChange={this.handleNameChange}
             onFocus={this.handleNameFocus}
           />
-          <div className="class-container">
+          <div className="class-select-container">
             {allClasses.map(curClass => {
               return (
                 <span
