@@ -1,9 +1,8 @@
 import {withReduxDevtools, createConnectedStore} from 'undux';
-import {getRandomClass, getRandomName} from '../utilities';
 
 const initialState = {
-  name: getRandomName(),
-  class: getRandomClass(),
+  name: '',
+  class: '',
   hp: 0,
   mp: 0,
   atk: 0,
