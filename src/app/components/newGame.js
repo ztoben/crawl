@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Store from '../store';
 import {getRandomClass, getRandomName, getInitialStats} from '../../utilities';
-import {DRUID, CLERIC, ROGUE, THIEF, PALADIN} from '../../utilities/player/classes';
+import {allClasses} from '../../utilities/player/classes';
 import '../style/newGame.scss';
 
 class NewGame extends Component {
@@ -53,12 +53,6 @@ class NewGame extends Component {
     e.target.select();
   };
 
-  handleClassChange = e => {
-    const {store} = this.props;
-
-    store.set('class')(e.target.value);
-  };
-
   render() {
     const {store} = this.props;
 
@@ -73,13 +67,18 @@ class NewGame extends Component {
             onChange={this.handleNameChange}
             onFocus={this.handleNameFocus}
           />
-          <select value={store.get('class')} onChange={this.handleClassChange}>
-            <option value={PALADIN}>{PALADIN}</option>
-            <option value={ROGUE}>{ROGUE}</option>
-            <option value={THIEF}>{THIEF}</option>
-            <option value={DRUID}>{DRUID}</option>
-            <option value={CLERIC}>{CLERIC}</option>
-          </select>
+          <div className="class-container">
+            {allClasses.map(curClass => {
+              return (
+                <span
+                  className={store.get('class') === curClass ? 'selected' : ''}
+                  onClick={() => store.set('class')(curClass)}
+                >
+                  {curClass}
+                </span>
+              );
+            })}
+          </div>
           <button onClick={this.randomizeCharacter}>randomize</button>
           <Link onClick={this.handleStartGame} to="/game/">
             <h3>start</h3>
