@@ -18,7 +18,7 @@ View the live version [here](http://ztoben-crawl.surge.sh/).
 - [x] Fix possible infinite loop while placing dungeons
 - [x] Show dungeon minimap
 - [x] Add a starting screen
-- [ ] New character screen to select name and class
+- [x] New character screen to select name and class
 - [x] Implement [Undux](https://github.com/bcherny/undux) for state management
 - [x] Add player info to panel (name, class, stats, etc.)
 - [ ] Build stats based on player class selection

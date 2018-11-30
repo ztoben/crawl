@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import {HashRouter as Router, Route} from 'react-router-dom';
-import StartScreen from './components/startScreen';
-import NewGame from './components/newGame';
-import Game from './components/game';
+import {HashRouter as Router} from 'react-router-dom';
 import Store from './store';
+import Routes from './routes';
 import './style/app.scss';
 
 export default class App extends Component {
@@ -12,9 +10,7 @@ export default class App extends Component {
       <Router>
         <div>
           <Store.Container>
-            <Route path="/" exact component={StartScreen} />
-            <Route path="/new_game/" component={NewGame} />
-            <Route path="/game/" component={Game} />
+            <Routes />
           </Store.Container>
         </div>
       </Router>
