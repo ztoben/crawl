@@ -9,13 +9,44 @@ const miniMapStyle = {
 };
 
 class MiniMap extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      shown: false,
+    };
+  }
+
+  toggleMiniMap = () =>
+    this.setState({
+      shown: !this.state.shown,
+    });
+
   render() {
+    const {miniMapArray} = this.props;
+    const {shown} = this.state;
+    const style = {
+      textAlign: 'center',
+      margin: 0,
+      cursor: 'pointer',
+      borderTop: '4px solid white',
+      borderLeft: shown ? '2px solid white' : '4px solid white',
+      borderRight: shown ? '2px solid white' : '4px solid white',
+      borderBottom: shown ? 'none' : '4px solid white',
+      width: shown ? '192px' : '188px',
+      background: 'lightgray',
+      color: 'black',
+      padding: 2,
+    };
+
     return (
       <div style={miniMapStyle}>
-        <h5 style={{margin: 0, textAlign: 'right'}}>minimap</h5>
-        <Stage width={200} height={200}>
-          <Layer>{this.props.miniMapArray}</Layer>
-        </Stage>
+        <h5 onClick={this.toggleMiniMap} style={style}>{`[${shown ? '-' : '+'}] minimap`}</h5>
+        {shown && (
+          <Stage width={200} height={200}>
+            <Layer>{miniMapArray}</Layer>
+          </Stage>
+        )}
       </div>
     );
   }

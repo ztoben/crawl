@@ -20,6 +20,7 @@ export default class Game extends Component {
       dungeons: [],
       selectedPosition: [],
       miniMapArray: [],
+      moves: 0,
     };
   }
 
@@ -39,7 +40,7 @@ export default class Game extends Component {
   }
 
   handleKeyDown = event => {
-    const {selectedPosition, map, miniMapArray} = this.state;
+    const {selectedPosition, map, miniMapArray, moves} = this.state;
     const newPosition = getNewPosition(map, selectedPosition, event);
 
     if (!isArrayEqual(selectedPosition, newPosition)) {
@@ -54,12 +55,13 @@ export default class Game extends Component {
         selectedPosition: newPosition,
         map: newMap,
         miniMapArray: newMiniMapArray,
+        moves: moves + 1,
       });
     }
   };
 
   render() {
-    const {selectedPosition, map, dungeons, miniMapArray} = this.state;
+    const {selectedPosition, map, dungeons, miniMapArray, moves} = this.state;
 
     return (
       <Fragment>
@@ -68,6 +70,7 @@ export default class Game extends Component {
           dungeons={dungeons}
           selectedPosition={selectedPosition}
           miniMapArray={miniMapArray}
+          moves={moves}
         />
         <div className="app-container" onKeyDown={this.handleKeyDown}>
           <h1>c r a w l</h1>
