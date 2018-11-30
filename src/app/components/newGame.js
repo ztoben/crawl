@@ -4,6 +4,7 @@ import Store from '../store';
 import {getRandomClass, getRandomName} from '../../utilities';
 import {DRUID, CLERIC, ROGUE, THIEF, PALADIN} from '../../utilities/player/classes';
 import '../style/newGame.scss';
+import {getInitialStats} from '../../utilities/player/getInitialStatValues';
 
 class NewGame extends Component {
   randomizeCharacter = () => {
@@ -23,6 +24,13 @@ class NewGame extends Component {
     const {store} = this.props;
 
     store.set('class')(e.target.value);
+    let stats = getInitialStats(store.get('class'));
+    store.set('hp')(stats.hp);
+    store.set('mp')(stats.mp);
+    store.set('atk')(stats.atk);
+    store.set('def')(stats.def);
+    store.set('satk')(stats.satk);
+    store.set('sdef')(stats.sdef);
   };
 
   render() {
