@@ -14,3 +14,4 @@ export {isVoid} from './tiles/isVoid';
 
 export {getRandomName} from './player/getRandomName';
 export {getRandomClass} from './player/getRandomClass';
+export {getInitialStats} from './player/getInitialStats';

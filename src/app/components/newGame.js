@@ -1,17 +1,28 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Store from '../store';
-import {getRandomClass, getRandomName} from '../../utilities';
+import {getRandomClass, getRandomName, getInitialStats} from '../../utilities';
 import {DRUID, CLERIC, ROGUE, THIEF, PALADIN} from '../../utilities/player/classes';
 import '../style/newGame.scss';
-import {getInitialStats} from '../../utilities/player/getInitialStatValues';
 
 class NewGame extends Component {
+  componentDidMount() {
+    this.randomizeCharacter();
+  }
+
   randomizeCharacter = () => {
     const {store} = this.props;
 
     store.set('name')(getRandomName());
     store.set('class')(getRandomClass());
+  };
+
+  randomizeStats = () => {
+    const {store} = this.props;
+
+    Object.entries(getInitialStats(store.get('class'))).forEach(([key, value]) =>
+      store.set(key)(value)
+    );
   };
 
   handleNameChange = e => {
@@ -24,13 +35,6 @@ class NewGame extends Component {
     const {store} = this.props;
 
     store.set('class')(e.target.value);
-    let stats = getInitialStats(store.get('class'));
-    store.set('hp')(stats.hp);
-    store.set('mp')(stats.mp);
-    store.set('atk')(stats.atk);
-    store.set('def')(stats.def);
-    store.set('satk')(stats.satk);
-    store.set('sdef')(stats.sdef);
   };
 
   render() {
@@ -50,7 +54,7 @@ class NewGame extends Component {
             <option value={CLERIC}>{CLERIC}</option>
           </select>
           <button onClick={this.randomizeCharacter}>randomize</button>
-          <Link to="/game/">
+          <Link onClick={this.randomizeStats} to="/game/">
             <h3>start</h3>
           </Link>
         </div>
