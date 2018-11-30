@@ -60,13 +60,14 @@ class NewGame extends Component {
       <div className="app-container">
         <h1>c r a w l</h1>
         <div className="new-game-container">
-          <h2>c h a r a c t e r</h2>
+          <h2>n a m e</h2>
           <input
             ref={this.nameInputRef}
             value={store.get('name')}
             onChange={this.handleNameChange}
             onFocus={this.handleNameFocus}
           />
+          <h2>c l a s s</h2>
           <div className="class-select-container">
             {allClasses.map(curClass => {
               return (
