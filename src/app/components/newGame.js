@@ -6,6 +6,12 @@ import {DRUID, CLERIC, ROGUE, THIEF, PALADIN} from '../../utilities/player/class
 import '../style/newGame.scss';
 
 class NewGame extends Component {
+  constructor(props) {
+    super(props);
+
+    this.nameInputRef = React.createRef();
+  }
+
   componentDidMount() {
     this.randomizeCharacter();
   }
@@ -25,10 +31,26 @@ class NewGame extends Component {
     );
   };
 
+  handleStartGame = e => {
+    const {store} = this.props;
+
+    if (store.get('name') === '') {
+      alert('you must set a name');
+      this.nameInputRef.current.focus();
+      e.preventDefault();
+    } else {
+      this.randomizeStats();
+    }
+  };
+
   handleNameChange = e => {
     const {store} = this.props;
 
     store.set('name')(e.target.value);
+  };
+
+  handleNameFocus = e => {
+    e.target.select();
   };
 
   handleClassChange = e => {
@@ -45,7 +67,12 @@ class NewGame extends Component {
         <h1>c r a w l</h1>
         <div className="new-game-container">
           <h2>c h a r a c t e r</h2>
-          <input value={store.get('name')} onChange={this.handleNameChange} />
+          <input
+            ref={this.nameInputRef}
+            value={store.get('name')}
+            onChange={this.handleNameChange}
+            onFocus={this.handleNameFocus}
+          />
           <select value={store.get('class')} onChange={this.handleClassChange}>
             <option value={PALADIN}>{PALADIN}</option>
             <option value={ROGUE}>{ROGUE}</option>
@@ -54,7 +81,7 @@ class NewGame extends Component {
             <option value={CLERIC}>{CLERIC}</option>
           </select>
           <button onClick={this.randomizeCharacter}>randomize</button>
-          <Link onClick={this.randomizeStats} to="/game/">
+          <Link onClick={this.handleStartGame} to="/game/">
             <h3>start</h3>
           </Link>
         </div>
