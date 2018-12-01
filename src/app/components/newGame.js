@@ -8,8 +8,8 @@ import {
   getInitialStats,
   getRandomArmor,
   getRandomWeapon,
+  allClasses,
 } from '../../utilities';
-import {allClasses} from '../../utilities/player/classes';
 import '../style/newGame.scss';
 
 class NewGame extends Component {

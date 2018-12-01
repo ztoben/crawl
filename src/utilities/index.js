@@ -15,6 +15,7 @@ export {isVoid} from './tiles/isVoid';
 export {getRandomName} from './player/getRandomName';
 export {getRandomClass} from './player/getRandomClass';
 export {getInitialStats} from './player/getInitialStats';
+export {allClasses} from './player/classes';
 
 export {getRandomArmor} from './items/getRandomArmor';
 export {getRandomWeapon} from './items/getRandomWeapon';
