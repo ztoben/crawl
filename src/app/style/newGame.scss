@@ -43,13 +43,24 @@
     cursor: pointer;
   }
 
-  input {
-    width: 200px;
-    padding: 15px 20px;
-    border: $container-border;
-    background-color: black;
-    color: white;
-    cursor: default;
+  .name-container {
+    display: inline-flex;
+    flex-direction: row;
+    position: relative;
+    align-items: center;
+
+    input {
+      font-size: 18px;
+      text-transform: uppercase;
+      text-align: center;
+      outline: none;
+      width: 200px;
+      padding: 15px 20px;
+      border: $container-border;
+      background-color: black;
+      color: white;
+      cursor: default;
+    }
   }
 
   .class-select-container {

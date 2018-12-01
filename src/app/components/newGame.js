@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Store from '../store';
+import Dice from './dice';
 import {
   getRandomClass,
   getRandomName,
@@ -19,13 +20,19 @@ class NewGame extends Component {
   }
 
   componentDidMount() {
-    this.randomizeCharacter();
+    this.randomizeName();
+    this.randomizeClass();
   }
 
-  randomizeCharacter = () => {
+  randomizeName = () => {
     const {store} = this.props;
 
     store.set('name')(getRandomName());
+  };
+
+  randomizeClass = () => {
+    const {store} = this.props;
+
     store.set('class')(getRandomClass());
   };
 
@@ -74,12 +81,15 @@ class NewGame extends Component {
         <h1>c r a w l</h1>
         <div className="new-game-container">
           <h2>n a m e</h2>
-          <input
-            ref={this.nameInputRef}
-            value={store.get('name')}
-            onChange={this.handleNameChange}
-            onFocus={this.handleNameFocus}
-          />
+          <div className="name-container">
+            <input
+              ref={this.nameInputRef}
+              value={store.get('name')}
+              onChange={this.handleNameChange}
+              onFocus={this.handleNameFocus}
+            />
+            <Dice onClick={this.randomizeName} />
+          </div>
           <h2>c l a s s</h2>
           <div className="class-select-container">
             {allClasses.map(curClass => {
@@ -94,7 +104,6 @@ class NewGame extends Component {
               );
             })}
           </div>
-          <button onClick={this.randomizeCharacter}>randomize</button>
           <Link onClick={this.handleStartGame} to="/game/">
             <h3>start</h3>
           </Link>
