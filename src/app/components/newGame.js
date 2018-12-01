@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Store from '../store';
-import {getRandomClass, getRandomName, getInitialStats} from '../../utilities';
+import {
+  getRandomClass,
+  getRandomName,
+  getInitialStats,
+  getRandomArmor,
+  getRandomWeapon,
+} from '../../utilities';
 import {allClasses} from '../../utilities/player/classes';
 import '../style/newGame.scss';
 
@@ -31,6 +37,12 @@ class NewGame extends Component {
     );
   };
 
+  randomizeItems = () => {
+    const {store} = this.props;
+
+    store.set('items')([getRandomWeapon(), getRandomArmor()]);
+  };
+
   handleStartGame = e => {
     const {store} = this.props;
 
@@ -40,6 +52,7 @@ class NewGame extends Component {
       e.preventDefault();
     } else {
       this.randomizeStats();
+      this.randomizeItems();
     }
   };
 
@@ -74,6 +87,7 @@ class NewGame extends Component {
                 <span
                   className={store.get('class') === curClass ? 'selected' : ''}
                   onClick={() => store.set('class')(curClass)}
+                  key={curClass}
                 >
                   {curClass}
                 </span>

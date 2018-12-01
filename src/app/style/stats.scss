@@ -28,7 +28,7 @@
 
     a {
       padding: 10px;
-      background-color: darkgray;
+      background-color: lightgray;
       border: 4px solid white;
       color: black;
       text-align: center;
@@ -39,12 +39,39 @@
     .stats-table-container {
       width: 100%;
 
-      .stats-table {
+      > * {
         width: 100%;
+      }
 
+      .stats-table,
+      .items-table {
         td {
           border: $inner-border;
           text-align: center;
+
+          &.hp {
+            color: $hp-color;
+          }
+
+          &.mp {
+            color: $mp-color;
+          }
+
+          &.atk {
+            color: $atk-color;
+          }
+
+          &.def {
+            color: $def-color;
+          }
+
+          &.satk {
+            color: $satk-color;
+          }
+
+          &.sdef {
+            color: $sdef-color;
+          }
         }
       }
     }
