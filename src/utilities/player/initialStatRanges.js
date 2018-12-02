@@ -1,5 +1,7 @@
+import {DRUID, CLERIC, ROGUE, THIEF, PALADIN} from './classes';
+
 export const ranges = {
-  paladin: {
+  [PALADIN]: {
     hp: {
       min: 75,
       max: 100,
@@ -25,7 +27,7 @@ export const ranges = {
       max: 17,
     },
   },
-  rogue: {
+  [ROGUE]: {
     hp: {
       min: 75,
       max: 100,
@@ -51,7 +53,7 @@ export const ranges = {
       max: 17,
     },
   },
-  thief: {
+  [THIEF]: {
     hp: {
       min: 75,
       max: 100,
@@ -77,7 +79,7 @@ export const ranges = {
       max: 17,
     },
   },
-  druid: {
+  [DRUID]: {
     hp: {
       min: 75,
       max: 100,
@@ -103,7 +105,7 @@ export const ranges = {
       max: 17,
     },
   },
-  cleric: {
+  [CLERIC]: {
     hp: {
       min: 75,
       max: 100,
