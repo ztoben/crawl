@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Stage, Layer} from 'react-konva';
-import {array} from 'prop-types';
+import {object} from 'prop-types';
 
 const miniMapStyle = {
   marginRight: 'auto',
@@ -13,7 +12,7 @@ class MiniMap extends Component {
     super(props);
 
     this.state = {
-      shown: false,
+      shown: true,
     };
   }
 
@@ -23,7 +22,7 @@ class MiniMap extends Component {
     });
 
   render() {
-    const {miniMapArray} = this.props;
+    const {miniMapPng} = this.props;
     const {shown} = this.state;
     const style = {
       textAlign: 'center',
@@ -43,9 +42,12 @@ class MiniMap extends Component {
       <div style={miniMapStyle}>
         <h5 onClick={this.toggleMiniMap} style={style}>{`[${shown ? '-' : '+'}] minimap`}</h5>
         {shown && (
-          <Stage width={200} height={200}>
-            <Layer>{miniMapArray}</Layer>
-          </Stage>
+          <img
+            alt="minimap"
+            width={200}
+            height={200}
+            src={`data:image/png;base64,${miniMapPng.getBase64()}`}
+          />
         )}
       </div>
     );
@@ -53,7 +55,7 @@ class MiniMap extends Component {
 }
 
 MiniMap.propTypes = {
-  miniMapArray: array,
+  miniMapPng: object,
 };
 
 export default MiniMap;

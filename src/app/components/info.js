@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import {array, number} from 'prop-types';
+import {array, number, object} from 'prop-types';
 import {FLOOR} from '../../utilities/tiles/constants';
 import '../style/info.scss';
 import MiniMap from './miniMap';
@@ -10,7 +10,7 @@ function getPercentExplored(discoveredFloor, totalFloor) {
 
 class Info extends Component {
   renderDungeonInfo = () => {
-    const {dungeons, selectedPosition, map, miniMapArray, moves} = this.props;
+    const {dungeons, selectedPosition, map, moves, miniMapPng} = this.props;
     const [discoveredFloor, totalFloor] = map.flat().reduce(
       (acc, {type, discoveredPercent}) => {
         if (type === FLOOR) {
@@ -30,7 +30,7 @@ class Info extends Component {
           <li>{`Selected: [${selectedPosition[1]}, ${selectedPosition[0]}]`}</li>
           <li>{`Moves made: ${moves}`}</li>
         </ul>
-        <MiniMap miniMapArray={miniMapArray} />
+        <MiniMap miniMapPng={miniMapPng} />
       </Fragment>
     ) : null;
   };
@@ -49,8 +49,8 @@ Info.propTypes = {
   dungeons: array,
   selectedPosition: array,
   map: array,
-  miniMapArray: array,
   moves: number,
+  miniMapPng: object,
 };
 
 export default Info;

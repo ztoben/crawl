@@ -1,18 +1,11 @@
-import {MAP_SIZE} from '../map/constants';
-import {Rect} from 'react-konva';
-import any from '@travi/any';
 import React from 'react';
 import {getMiniMapTileColor} from './getMiniMapTileColor';
 
-export function updateMiniMapArray(newMiniMapArray, x, y, tile, newPosition) {
-  newMiniMapArray[x * MAP_SIZE + y] = (
-    <Rect
-      x={y * 2}
-      y={x * 2}
-      width={2}
-      height={2}
-      fill={getMiniMapTileColor(tile, [x, y], newPosition)}
-      key={any.string()}
-    />
-  );
+export function updateMiniMapArray(miniMapPng, x, y, tile, newPosition) {
+  const color = getMiniMapTileColor(tile, [x, y], newPosition);
+
+  miniMapPng.setPixel(y + y, x + x, color);
+  miniMapPng.setPixel(y + y + 1, x + x, color);
+  miniMapPng.setPixel(y + y, x + x + 1, color);
+  miniMapPng.setPixel(y + y + 1, x + x + 1, color);
 }

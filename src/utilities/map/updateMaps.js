@@ -21,7 +21,7 @@ function updateMapTile(map, x, y, tile, addedPercent) {
   map[x][y] = updateTile(map, tile.type, [x, y], Math.max(addedPercent, tile.discoveredPercent));
 }
 
-function updateMapTilesAndMiniMap(posX, posY, newMap, newMiniMapArray, newPosition) {
+function updateMapTilesAndMiniMap(posX, posY, newMap, miniMapPng, newPosition) {
   for (
     let x = normalizeCoordinate(posX - VIEW_DISTANCE);
     x < normalizeCoordinate(posX + VIEW_DISTANCE);
@@ -36,24 +36,20 @@ function updateMapTilesAndMiniMap(posX, posY, newMap, newMiniMapArray, newPositi
       const tile = newMap[x][y];
 
       updateMapTile(newMap, x, y, tile, addedPercent);
-      updateMiniMapArray(newMiniMapArray, x, y, newMap[x][y], newPosition);
+      updateMiniMapArray(miniMapPng, x, y, newMap[x][y], newPosition);
     }
   }
 }
 
-export function updateMaps(map, miniMap, newPosition, oldPosition) {
-  console.time('updateMaps');
+export function updateMaps(map, miniMapPng, newPosition, oldPosition) {
   const newMap = [...map];
   const [posX, posY] = newPosition;
-  const newMiniMapArray = initializeMiniMap(miniMap, newMap, newPosition);
 
-  updateMapTilesAndMiniMap(posX, posY, newMap, newMiniMapArray, newPosition);
+  initializeMiniMap(miniMapPng, newMap, newPosition);
+  updateMapTilesAndMiniMap(posX, posY, newMap, miniMapPng, newPosition);
   setSelected(newMap, newPosition, oldPosition);
-
-  console.timeEnd('updateMaps');
 
   return {
     newMap,
-    newMiniMapArray,
   };
 }

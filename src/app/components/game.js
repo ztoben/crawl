@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import PNGlib from 'node-pnglib';
 import {
   initializeMap,
   getNewPosition,
@@ -19,19 +20,19 @@ export default class Game extends Component {
       map: [],
       dungeons: [],
       selectedPosition: [],
-      miniMapArray: [],
       moves: 0,
+      miniMapPng: new PNGlib(200, 200),
     };
   }
 
   async componentDidMount() {
+    const {miniMapPng} = this.state;
     const {map, dungeons} = await initializeMap();
     const selectedPosition = findStartingPosition(map);
-    const {newMap, newMiniMapArray} = updateMaps(map, [], selectedPosition);
+    const {newMap} = updateMaps(map, miniMapPng, selectedPosition, [0, 0]);
 
     this.setState({
       map: newMap,
-      miniMapArray: newMiniMapArray,
       dungeons,
       selectedPosition,
     });
@@ -40,28 +41,22 @@ export default class Game extends Component {
   }
 
   handleKeyDown = event => {
-    const {selectedPosition, map, miniMapArray, moves} = this.state;
+    const {selectedPosition, map, moves, miniMapPng} = this.state;
     const newPosition = getNewPosition(map, selectedPosition, event);
 
     if (!isArrayEqual(selectedPosition, newPosition)) {
-      const {newMap, newMiniMapArray} = updateMaps(
-        map,
-        miniMapArray,
-        newPosition,
-        selectedPosition
-      );
+      const {newMap} = updateMaps(map, miniMapPng, newPosition, selectedPosition);
 
       this.setState({
         selectedPosition: newPosition,
         map: newMap,
-        miniMapArray: newMiniMapArray,
         moves: moves + 1,
       });
     }
   };
 
   render() {
-    const {selectedPosition, map, dungeons, miniMapArray, moves} = this.state;
+    const {selectedPosition, map, dungeons, moves, miniMapPng} = this.state;
 
     return (
       <Fragment>
@@ -69,7 +64,7 @@ export default class Game extends Component {
           map={map}
           dungeons={dungeons}
           selectedPosition={selectedPosition}
-          miniMapArray={miniMapArray}
+          miniMapPng={miniMapPng}
           moves={moves}
         />
         <div className="app-container" onKeyDown={this.handleKeyDown}>
