@@ -1,10 +1,11 @@
-import {ranges} from './monsterInitialStatRanges';
 import any from '@travi/any';
+import {ranges} from './monsterInitialStatRanges';
 import {getMonsterStats} from './getMonsterStats';
+import {allMonsters} from './monsters';
 
 export function getRandomMonster() {
-  let monster = Object.keys(ranges)[any.integer({min: 0, max: Object.keys(ranges).length - 1})];
-  let stats = getMonsterStats(monster);
+  const monsterType = any.fromList(allMonsters);
+  const stats = getMonsterStats(monsterType, ranges);
 
-  return {monster, ...stats};
+  return {type: monsterType, ...stats};
 }
