@@ -1,8 +1,8 @@
 import React from 'react';
 import {getMiniMapTileColor} from './getMiniMapTileColor';
 
-export function updateMiniMapArray(miniMapPng, x, y, tile, newPosition) {
-  const color = getMiniMapTileColor(tile, [x, y], newPosition);
+export function updateMiniMap(miniMapPng, x, y, tile, selectedPosition) {
+  const color = getMiniMapTileColor(tile, [x, y], selectedPosition);
 
   miniMapPng.setPixel(y + y, x + x, color);
   miniMapPng.setPixel(y + y + 1, x + x, color);

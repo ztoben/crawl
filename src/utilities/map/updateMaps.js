@@ -1,5 +1,5 @@
 import {toggleSelectedTile, updateTile, getTile} from '../tiles';
-import {initializeMiniMap, updateMiniMapArray} from '../miniMap';
+import {updateMiniMap} from '../miniMap';
 import {normalizeCoordinate} from '../helpers';
 import {VIEW_DISTANCE} from './constants';
 
@@ -21,7 +21,7 @@ function updateMapTile(map, x, y, tile, addedPercent) {
   map[x][y] = updateTile(map, tile.type, [x, y], Math.max(addedPercent, tile.discoveredPercent));
 }
 
-function updateMapTilesAndMiniMap(posX, posY, newMap, miniMapPng, newPosition) {
+function updateMapTilesAndMiniMap(posX, posY, map, miniMapPng, selectedPosition) {
   for (
     let x = normalizeCoordinate(posX - VIEW_DISTANCE);
     x < normalizeCoordinate(posX + VIEW_DISTANCE);
@@ -33,10 +33,9 @@ function updateMapTilesAndMiniMap(posX, posY, newMap, miniMapPng, newPosition) {
       y++
     ) {
       const addedPercent = getDiscoveredPercent(x, y, posX, posY);
-      const tile = newMap[x][y];
 
-      updateMapTile(newMap, x, y, tile, addedPercent);
-      updateMiniMapArray(miniMapPng, x, y, newMap[x][y], newPosition);
+      updateMapTile(map, x, y, map[x][y], addedPercent);
+      updateMiniMap(miniMapPng, x, y, map[x][y], selectedPosition);
     }
   }
 }
@@ -45,11 +44,8 @@ export function updateMaps(map, miniMapPng, newPosition, oldPosition) {
   const newMap = [...map];
   const [posX, posY] = newPosition;
 
-  initializeMiniMap(miniMapPng, newMap, newPosition);
   updateMapTilesAndMiniMap(posX, posY, newMap, miniMapPng, newPosition);
   setSelected(newMap, newPosition, oldPosition);
 
-  return {
-    newMap,
-  };
+  return newMap;
 }

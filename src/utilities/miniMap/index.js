@@ -1,2 +1,2 @@
 export {initializeMiniMap} from './initializeMiniMap';
-export {updateMiniMapArray} from './updateMiniMapArray';
+export {updateMiniMap} from './updateMiniMap';

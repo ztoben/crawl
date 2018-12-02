@@ -11,6 +11,7 @@ import Info from './info';
 import Stats from './stats';
 import Map from './map';
 import '../style/game.scss';
+import {initializeMiniMap} from '../../utilities/miniMap';
 
 export default class Game extends Component {
   constructor(props) {
@@ -29,10 +30,11 @@ export default class Game extends Component {
     const {miniMapPng} = this.state;
     const {map, dungeons} = await initializeMap();
     const selectedPosition = findStartingPosition(map);
-    const {newMap} = updateMaps(map, miniMapPng, selectedPosition, [0, 0]);
+
+    initializeMiniMap(miniMapPng, map);
 
     this.setState({
-      map: newMap,
+      map: updateMaps(map, miniMapPng, selectedPosition),
       dungeons,
       selectedPosition,
     });
@@ -45,11 +47,9 @@ export default class Game extends Component {
     const newPosition = getNewPosition(map, selectedPosition, event);
 
     if (!isArrayEqual(selectedPosition, newPosition)) {
-      const {newMap} = updateMaps(map, miniMapPng, newPosition, selectedPosition);
-
       this.setState({
         selectedPosition: newPosition,
-        map: newMap,
+        map: updateMaps(map, miniMapPng, newPosition, selectedPosition),
         moves: moves + 1,
       });
     }
