@@ -1,4 +1,4 @@
-@import './variables';
+@import 'variables';
 
 .tile {
   width: calc(#{$size}/#{$view-units});

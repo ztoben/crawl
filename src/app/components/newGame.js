@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import Store from '../store';
 import Dice from './dice';
+import Notification from './notification';
 import {
   getRandomClass,
   getRandomName,
@@ -17,6 +18,10 @@ class NewGame extends Component {
     super(props);
 
     this.nameInputRef = React.createRef();
+
+    this.state = {
+      nameNotificationShown: false,
+    };
   }
 
   componentDidMount() {
@@ -54,8 +59,9 @@ class NewGame extends Component {
     const {store} = this.props;
 
     if (store.get('name') === '') {
-      alert('you must set a name');
-      this.nameInputRef.current.focus();
+      this.setState({
+        nameNotificationShown: true,
+      });
       e.preventDefault();
     } else {
       this.randomizeStats();
@@ -71,6 +77,14 @@ class NewGame extends Component {
 
   handleNameFocus = e => {
     e.target.select();
+  };
+
+  handleNameNotificationDismiss = () => {
+    this.setState({
+      nameNotificationShown: false,
+    });
+
+    this.nameInputRef.current.focus();
   };
 
   render() {
@@ -107,6 +121,12 @@ class NewGame extends Component {
           <Link onClick={this.handleStartGame} to="/game/">
             <h3>start</h3>
           </Link>
+          <Notification
+            shown={this.state.nameNotificationShown}
+            type="alert"
+            notification="you must set a name"
+            dismissHandler={this.handleNameNotificationDismiss}
+          />
         </div>
       </div>
     );
