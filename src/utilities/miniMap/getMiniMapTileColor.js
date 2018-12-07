@@ -12,11 +12,5 @@ function getColor(selectedPosition, currPosition, discoveredPercent, tile) {
 
 export function getMiniMapTileColor(tile, currPosition, selectedPosition) {
   const {discoveredPercent} = tile;
-  const color = getColor(selectedPosition, currPosition, discoveredPercent, tile);
-
-  if (selectedPosition) {
-    console.log(color);
-  }
-
-  return color;
+  return getColor(selectedPosition, currPosition, discoveredPercent, tile);
 }

@@ -1,7 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import PNGlib from 'node-pnglib';
+import Store from '../store';
 import {
   initializeMap,
+  initializeMiniMap,
   getNewPosition,
   findStartingPosition,
   isArrayEqual,
@@ -10,10 +12,11 @@ import {
 import Info from './info';
 import Stats from './stats';
 import Map from './map';
+import GameLog from './gameLog';
 import '../style/game.scss';
-import {initializeMiniMap} from '../../utilities/miniMap';
+import {format} from 'date-fns';
 
-export default class Game extends Component {
+class Game extends Component {
   constructor(props) {
     super(props);
 
@@ -42,9 +45,21 @@ export default class Game extends Component {
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
   }
 
+  logEvent = event => {
+    const {store} = this.props;
+    const gameLog = [...store.get('gameLog')];
+
+    gameLog.push({
+      content: event,
+      time: format(new Date(), 'hh:mm:ss'),
+    });
+
+    store.set('gameLog')(gameLog);
+  };
+
   handleKeyDown = event => {
     const {selectedPosition, map, moves, miniMapPng} = this.state;
-    const newPosition = getNewPosition(map, selectedPosition, event);
+    const newPosition = getNewPosition(map, selectedPosition, event, this.logEvent);
 
     if (!isArrayEqual(selectedPosition, newPosition)) {
       this.setState({
@@ -72,7 +87,10 @@ export default class Game extends Component {
           <Map map={map} selectedPosition={selectedPosition} />
         </div>
         <Stats />
+        <GameLog />
       </Fragment>
     );
   }
 }
+
+export default Store.withStore(Game);

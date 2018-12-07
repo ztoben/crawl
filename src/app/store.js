@@ -1,4 +1,5 @@
 import {withReduxDevtools, createConnectedStore} from 'undux';
+import {format} from 'date-fns';
 
 const initialState = {
   name: '',
@@ -10,6 +11,7 @@ const initialState = {
   satk: 0,
   sdef: 0,
   items: [],
+  gameLog: [],
 };
 
 export default createConnectedStore(initialState, withReduxDevtools);

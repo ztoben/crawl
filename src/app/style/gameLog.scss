@@ -1,0 +1,36 @@
+@import 'variables';
+
+.game-log-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .game-log {
+    width: 750px;
+    height: 200px;
+    background-color: black;
+    border: $container-border;
+    margin-top: 10px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    ul {
+      list-style: none;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin: 0;
+
+      li {
+        color: white;
+        font-size: 14px;
+        margin: 10px;
+      }
+
+      li:before {
+        content: '>';
+        padding-right: 10px;
+        font-weight: bold;
+      }
+    }
+  }
+}

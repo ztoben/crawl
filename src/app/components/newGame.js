@@ -66,6 +66,7 @@ class NewGame extends Component {
     } else {
       this.randomizeStats();
       this.randomizeItems();
+      store.set('gameLog')([]);
     }
   };
 
