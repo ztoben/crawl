@@ -1,5 +1,4 @@
 import React, {Component, Fragment} from 'react';
-import PNGlib from 'node-pnglib';
 import Store from '../store';
 import {
   initializeMap,
@@ -8,6 +7,8 @@ import {
   findStartingPosition,
   isArrayEqual,
   updateMaps,
+  getRandomPhrase,
+  NEW_GAME,
 } from '../../utilities';
 import Info from './info';
 import Stats from './stats';
@@ -25,24 +26,25 @@ class Game extends Component {
       dungeons: [],
       selectedPosition: [],
       moves: 0,
-      miniMapPng: new PNGlib(200, 200),
+      miniMapPng: undefined,
     };
   }
 
   async componentDidMount() {
-    const {miniMapPng} = this.state;
     const {map, dungeons} = await initializeMap();
     const selectedPosition = findStartingPosition(map);
-
-    initializeMiniMap(miniMapPng, map);
+    const miniMapPng = initializeMiniMap(map);
 
     this.setState({
       map: updateMaps(map, miniMapPng, selectedPosition),
       dungeons,
       selectedPosition,
+      miniMapPng,
     });
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
+
+    this.logEvent(getRandomPhrase(NEW_GAME));
   }
 
   logEvent = event => {

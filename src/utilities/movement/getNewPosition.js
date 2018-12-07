@@ -1,13 +1,7 @@
 import {normalizePosition} from './normalizePosition';
 import {getTile, isBoundary, isVoid} from '..';
-import any from '@travi/any';
-
-const wallMessages = [
-  "Yep, that's a wall...",
-  'It appears to be some kind of wall',
-  "You can't do that",
-  'A large vertical slab blocks your way',
-];
+import {getRandomPhrase} from '../gameLog/getRandomPhrase';
+import {VOID_MOVEMENT} from '../gameLog/constants';
 
 function getPositionAfterEvent(selectedPosition, event) {
   const newPosition = [...selectedPosition];
@@ -39,7 +33,7 @@ export function getNewPosition(map, selectedPosition, event, logEvent) {
     return selectedPosition;
   }
   if (isVoid(tile)) {
-    logEvent(any.fromList(wallMessages));
+    logEvent(getRandomPhrase(VOID_MOVEMENT));
     return selectedPosition;
   }
 

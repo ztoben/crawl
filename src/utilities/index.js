@@ -20,3 +20,6 @@ export {allClasses} from './player/classes';
 
 export {getRandomArmor} from './items/getRandomArmor';
 export {getRandomWeapon} from './items/getRandomWeapon';
+
+export {getRandomPhrase} from './gameLog/getRandomPhrase';
+export {NEW_GAME} from './gameLog/constants';
