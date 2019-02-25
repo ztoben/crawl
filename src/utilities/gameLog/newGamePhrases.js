@@ -1,6 +1,6 @@
 export const newGamePhrases = [
-  'A new adventure begins',
-  'Started a new game',
-  'Dungeons await',
-  'Time to explore',
+  'A new adventure begins...',
+  'Dungeons await...',
+  'Time to explore...',
+  'Roll out soldier...',
 ];

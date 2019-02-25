@@ -44,6 +44,9 @@ class Game extends Component {
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
 
+    this.logEvent('************************************************');
+    this.logEvent('* Welcome to crawl. Defeat all enemies to win. *');
+    this.logEvent('************************************************');
     this.logEvent(getRandomPhrase(NEW_GAME));
   }
 

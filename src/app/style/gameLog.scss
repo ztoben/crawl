@@ -13,6 +13,8 @@
     margin-top: 10px;
     overflow-y: scroll;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column-reverse;
 
     ul {
       list-style: none;

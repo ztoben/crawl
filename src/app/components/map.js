@@ -7,22 +7,18 @@ class Map extends Component {
   renderTiles = () => {
     const {map, selectedPosition} = this.props;
 
-    return getViewingArea(selectedPosition, map).map((row, idx) => {
-      return (
-        <div className="row" key={idx}>
-          {row.map(({type, index, content, style, selected}) => {
-            return (
-              <Tile
-                type={type}
-                selected={selected}
-                key={index.toString()}
-                content={content}
-                style={style}
-              />
-            );
-          })}
-        </div>
-      );
+    return getViewingArea(selectedPosition, map).map(row => {
+      return row.map(({type, index, content, style, selected}) => {
+        return (
+          <Tile
+            type={type}
+            selected={selected}
+            key={index.toString()}
+            content={content}
+            style={style}
+          />
+        );
+      });
     });
   };
 

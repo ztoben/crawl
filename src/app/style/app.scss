@@ -20,11 +20,12 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 
 .app-container {
   width: $size;
-  height: $size;
+  min-height: $size;
   display: flex;
   color: white;
   background-color: black;

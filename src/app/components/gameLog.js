@@ -5,7 +5,7 @@ import '../style/gameLog.scss';
 class GameLog extends Component {
   render() {
     const {store} = this.props;
-    const gameLog = [...store.get('gameLog')].reverse();
+    const gameLog = [...store.get('gameLog')];
 
     /*
       gameLog store shape:

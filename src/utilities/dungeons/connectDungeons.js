@@ -1,6 +1,7 @@
 import {js as EasyStar} from 'easystarjs';
 import {updateTile} from '../tiles/updateTile';
 import {FLOOR} from '../tiles/constants';
+import {isVoid} from '..';
 
 export async function connectDungeons(map, dungeons) {
   const newMap = JSON.parse(JSON.stringify(map));
@@ -40,7 +41,7 @@ export async function connectDungeons(map, dungeons) {
     paths.forEach(path => {
       if (path)
         path.forEach(({x, y}) => {
-          newMap[x][y] = updateTile(newMap, FLOOR, [x, y], 0);
+          if (isVoid(newMap[x][y])) newMap[x][y] = updateTile(newMap, FLOOR, [x, y], 0);
         });
     });
   });

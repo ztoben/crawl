@@ -1,15 +1,18 @@
 @import 'variables';
 
+$noOfColumns: 15;
+$rowHeight: calc(#{$size} / #{$noOfColumns});
+$ratioA: 1;
+$ratioB: 1;
+
 .map-container {
-  width: 100%;
-  height: 100%;
+  height: $size;
+  width: $size;
   position: relative;
 
-  .row {
-    display: flex;
-    align-content: center;
-    height: calc(calc(#{$size} - #{$header-height} * 2 + 1px) / #{$view-units});
-  }
+  display: grid;
+  grid-template-columns: repeat($noOfColumns, 1fr);
+  grid-auto-rows: $rowHeight;
 
   .loading {
     display: flex;
