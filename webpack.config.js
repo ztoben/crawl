@@ -4,33 +4,28 @@ const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = () => {
   return {
-    entry: [
-      'react-hot-loader/patch',
-      './src/index.js'
-    ],
+    entry: ['react-hot-loader/patch', './src/index.js'],
     module: {
       rules: [
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: ['babel-loader']
+          use: ['babel-loader'],
         },
         {
           test: /\.(scss|css)$/,
-          use: [
-            'style-loader',
-            'css-loader',
-            'sass-loader'
-          ]
+          use: ['style-loader', 'css-loader', 'sass-loader'],
         },
         {
           test: /\.html$/,
-          use: [{
-            loader: 'html-loader',
-            options: {
-              minimize: true
-            }
-          }]
+          use: [
+            {
+              loader: 'html-loader',
+              options: {
+                minimize: true,
+              },
+            },
+          ],
         },
         {
           test: /\.(jpg|png)$/,
@@ -40,31 +35,34 @@ module.exports = () => {
               limit: 25000,
             },
           },
-        }
-      ]
+        },
+      ],
     },
     resolve: {
-      extensions: ['*', '.js', '.jsx']
+      extensions: ['*', '.js', '.jsx'],
+      alias: {
+        'react-dom': '@hot-loader/react-dom',
+      },
     },
     output: {
       path: __dirname + '/dist',
       publicPath: '/',
-      filename: 'bundle.js'
+      filename: 'bundle.js',
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new HtmlWebPackPlugin({
-        template: "./src/index.html",
-        filename: "index.html"
+        template: './src/index.html',
+        filename: 'index.html',
       }),
-      new FaviconsWebpackPlugin('./assets/favicon.png')
+      new FaviconsWebpackPlugin('./assets/favicon.png'),
     ],
     devServer: {
       compress: true,
       contentBase: './dist',
       hot: true,
       open: true,
-      port: 9999
-    }
+      port: 9999,
+    },
   };
 };

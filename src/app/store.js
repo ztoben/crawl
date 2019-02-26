@@ -1,4 +1,4 @@
-import {withReduxDevtools, createConnectedStore} from 'undux';
+import {createConnectedStore} from 'undux';
 
 const initialState = {
   map: [],
@@ -19,7 +19,7 @@ const initialState = {
   chests: [],
   chestPositions: [],
   selectedPosition: [],
-  gameState: 'ongoing', //ongoing, over, win
+  gameState: 'ongoing',
 };
 
-export default createConnectedStore(initialState, withReduxDevtools);
+export default createConnectedStore(initialState);
