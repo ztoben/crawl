@@ -1,14 +1,15 @@
-import {ATTACK_BOOST, CHEST, DEFENSE_BOOST, END_GAME, MONSTER, PORTAL, POTION} from './constants';
+import any from '@travi/any';
 import {selectEmptyRandomCoordinate} from '../helpers/selectEmptyRandomCoordinate';
 import {getRandomMonster} from './getRandomMonster';
+import {MONSTER} from './constants';
 
 export function addMonstersToMap(map) {
-  const monsters = Array(10).fill(getRandomMonster());
+  const numberOfMonsters = any.integer({min: 10, max: 20});
 
-  monsters.forEach(content => {
+  for (let i = 0; i < numberOfMonsters; i++) {
     const [x, y] = selectEmptyRandomCoordinate(map);
 
     map[x][y].type = MONSTER;
-    map[x][y].data = content;
-  });
+    map[x][y].data = getRandomMonster();
+  }
 }
