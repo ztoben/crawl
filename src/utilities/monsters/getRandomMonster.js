@@ -6,6 +6,7 @@ import {allMonsters} from './constants';
 export function getRandomMonster() {
   const monsterType = any.fromList(allMonsters);
   const stats = getMonsterStats(monsterType, ranges);
+  const drops = [];
 
-  return {type: monsterType, ...stats};
+  return {type: monsterType, drops, ...stats};
 }

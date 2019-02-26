@@ -45,20 +45,24 @@ export function getNewPosition(map, selectedPosition, event, logEvent, store) {
     return selectedPosition;
   }
   if (isChest(tile)) {
-    return openChest({
-      store,
-      logEvent,
-      type: tile.data.type,
-      position: normalizePosition(newPosition),
-    });
+    return (
+      openChest({
+        store,
+        logEvent,
+        type: tile.data.type,
+        position: normalizePosition(newPosition),
+      }) || selectedPosition
+    );
   }
   if (isMonster(tile)) {
-    return attackMonster({
-      store,
-      logEvent,
-      monster: tile.data,
-      position: normalizePosition(newPosition),
-    });
+    return (
+      attackMonster({
+        store,
+        logEvent,
+        monster: tile.data,
+        position: normalizePosition(newPosition),
+      }) || selectedPosition
+    );
   }
 
   return normalizePosition(newPosition);

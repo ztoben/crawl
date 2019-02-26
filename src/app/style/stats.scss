@@ -10,6 +10,7 @@
   margin-left: 10px;
   border: $container-border;
   flex-direction: column;
+  overflow-y: scroll;
 
   h2 {
     height: 40px;
