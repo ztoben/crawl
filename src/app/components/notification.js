@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {bool, func, string} from 'prop-types';
+import {bool, func, string, object} from 'prop-types';
 import '../style/notification.scss';
 
 class Notification extends Component {
@@ -27,7 +27,7 @@ class Notification extends Component {
           <h2>{this.buildType()}</h2>
           <hr />
           <div className="notification-content">
-            <span>{notification}</span>
+            {notification}
             <button onClick={dismissHandler}>Close</button>
           </div>
         </div>
@@ -40,7 +40,7 @@ Notification.propTypes = {
   type: string,
   shown: bool,
   dismissHandler: func,
-  notification: string,
+  notification: object,
 };
 
 export default Notification;

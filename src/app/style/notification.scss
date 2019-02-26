@@ -3,7 +3,7 @@
 .notification-container {
   margin: 0;
   width: 400px;
-  height: 250px;
+  min-height: 250px;
   background-color: black;
   border: $container-border;
   position: fixed;
@@ -29,6 +29,7 @@
     .notification-content {
       justify-content: space-between;
       flex-direction: column;
+      text-align: left;
       display: flex;
       flex: 1;
 

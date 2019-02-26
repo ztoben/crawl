@@ -12,6 +12,7 @@ import {
   allClasses,
 } from '../../utilities';
 import '../style/newGame.scss';
+import Help from './help';
 
 class NewGame extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class NewGame extends Component {
 
     this.state = {
       nameNotificationShown: false,
+      helpShown: false,
     };
   }
 
@@ -88,11 +90,22 @@ class NewGame extends Component {
     this.nameInputRef.current.focus();
   };
 
+  handleHelpShow = () => {
+    this.setState({helpShown: true});
+  };
+
+  handleHelpDismiss = () => {
+    this.setState({helpShown: false});
+  };
+
   render() {
     const {store} = this.props;
 
     return (
       <div className="app-container">
+        <span className="help-icon" onClick={this.handleHelpShow}>
+          <p>?</p>
+        </span>
         <h1>c r a w l</h1>
         <div className="new-game-container">
           <h2>n a m e</h2>
@@ -125,8 +138,14 @@ class NewGame extends Component {
           <Notification
             shown={this.state.nameNotificationShown}
             type="alert"
-            notification="you must set a name"
+            notification={<span>"you must set a name"</span>}
             dismissHandler={this.handleNameNotificationDismiss}
+          />
+          <Notification
+            shown={this.state.helpShown}
+            type="info"
+            notification={<Help />}
+            dismissHandler={this.handleHelpDismiss}
           />
         </div>
       </div>
