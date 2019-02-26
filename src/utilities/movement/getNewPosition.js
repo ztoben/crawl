@@ -1,3 +1,4 @@
+import any from '@travi/any';
 import {normalizePosition} from './normalizePosition';
 import {getTile, isBoundary, isVoid} from '..';
 import {getRandomPhrase} from '../gameLog/getRandomPhrase';
@@ -37,11 +38,19 @@ export function getNewPosition(map, selectedPosition, event, logEvent, store) {
     return selectedPosition;
   }
   if (isVoid(tile)) {
-    if (logEvent) logEvent(getRandomPhrase(VOID_MOVEMENT));
+    if (logEvent) {
+      const random = any.integer({min: 1, max: 10});
+      if (random === 10) logEvent(getRandomPhrase(VOID_MOVEMENT));
+    }
     return selectedPosition;
   }
   if (isChest(tile)) {
-    return openChest({store, logEvent, type: tile.data.type, position: newPosition});
+    return openChest({
+      store,
+      logEvent,
+      type: tile.data.type,
+      position: normalizePosition(newPosition),
+    });
   }
 
   return normalizePosition(newPosition);

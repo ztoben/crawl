@@ -17,12 +17,11 @@ export function openChest({store, logEvent, type, position}) {
       return position;
     case PORTAL:
       logEvent('You step into a portal and are warped to a new place on the map.');
-      const map = store.get('map');
       const miniMapPng = store.get('miniMapPng');
       const selectedPosition = selectEmptyRandomCoordinate(map);
 
       store.set('selectedPosition')(selectedPosition);
-      store.set('map')(updateMaps(map, miniMapPng, selectedPosition));
+      store.set('map')(updateMaps(map, miniMapPng, selectedPosition, position));
 
       return selectedPosition;
     case END_GAME:

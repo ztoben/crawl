@@ -16,7 +16,9 @@ function updateMapTile(map, x, y, tile, addedPercent) {
   map[x][y] = updateTile(map, tile.type, [x, y], Math.max(addedPercent, tile.discoveredPercent));
 }
 
-function updateMapTilesAndMiniMap(posX, posY, map, miniMapPng, selectedPosition) {
+function updateMapTilesAndMiniMap(map, miniMapPng, newPosition, oldPosition) {
+  const [posX, posY] = newPosition;
+
   for (
     let x = normalizeCoordinate(posX - VIEW_DISTANCE);
     x < normalizeCoordinate(posX + VIEW_DISTANCE);
@@ -30,16 +32,36 @@ function updateMapTilesAndMiniMap(posX, posY, map, miniMapPng, selectedPosition)
       const addedPercent = getDiscoveredPercent(x, y, posX, posY);
 
       updateMapTile(map, x, y, map[x][y], addedPercent);
-      updateMiniMap(miniMapPng, x, y, map[x][y], selectedPosition);
+      updateMiniMap(miniMapPng, x, y, map[x][y], newPosition);
+    }
+  }
+
+  if (oldPosition) {
+    const [oldX, oldY] = oldPosition;
+
+    for (
+      let x = normalizeCoordinate(oldX - VIEW_DISTANCE);
+      x < normalizeCoordinate(oldX + VIEW_DISTANCE);
+      x++
+    ) {
+      for (
+        let y = normalizeCoordinate(oldY - VIEW_DISTANCE);
+        y < normalizeCoordinate(oldY + VIEW_DISTANCE);
+        y++
+      ) {
+        const addedPercent = getDiscoveredPercent(x, y, oldX, oldY);
+
+        updateMapTile(map, x, y, map[x][y], addedPercent);
+        updateMiniMap(miniMapPng, x, y, map[x][y], newPosition);
+      }
     }
   }
 }
 
-export function updateMaps(map, miniMapPng, newPosition) {
+export function updateMaps(map, miniMapPng, newPosition, oldPosition) {
   const newMap = [...map];
-  const [posX, posY] = newPosition;
 
-  updateMapTilesAndMiniMap(posX, posY, newMap, miniMapPng, newPosition);
+  updateMapTilesAndMiniMap(newMap, miniMapPng, newPosition, oldPosition);
 
   return newMap;
 }
