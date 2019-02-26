@@ -39,6 +39,18 @@ body {
     margin: 20px 0;
   }
 
+  .end-game {
+    width: $size;
+    height: $size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      animation: blinker 1s linear infinite;
+    }
+  }
+
   .help-icon {
     $icon-size: 30px;
 
@@ -60,5 +72,11 @@ body {
       display: flex;
       justify-content: center;
     }
+  }
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
   }
 }

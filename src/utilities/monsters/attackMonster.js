@@ -34,7 +34,11 @@ export function attackMonster({store, logEvent, monster, position}) {
   const monsterHp = monster.hp - monsterDamage;
   const playerHp = store.get('hp') - playerDamage;
 
-  store.set('hp')(playerHp);
+  store.set('hp')(Math.max(playerHp, 0));
+
+  if (playerHp <= 0) {
+    store.set('gameState')('over');
+  }
 
   if (monsterHp > 0) {
     logEvent(`You strike the ${monster.type} for ${monsterDamage} damage.`);

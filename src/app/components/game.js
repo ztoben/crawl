@@ -16,6 +16,8 @@ import Map from './map';
 import GameLog from './gameLog';
 import '../style/game.scss';
 import {format} from 'date-fns';
+import GameOver from './gameOver';
+import GameWin from './gameWin';
 
 class Game extends Component {
   constructor(props) {
@@ -76,10 +78,22 @@ class Game extends Component {
     }
   };
 
+  getGameState = (gameState, selectedPosition) => {
+    switch (gameState) {
+      case 'ongoing':
+        return <Map map={map} selectedPosition={selectedPosition} />;
+      case 'over':
+        return <GameOver />;
+      case 'win':
+        return <GameWin />;
+    }
+  };
+
   render() {
     const {moves} = this.state;
     const {store} = this.props;
 
+    const gameState = store.get('gameState');
     const map = store.get('map');
     const dungeons = store.get('dungeons');
     const miniMapPng = store.get('miniMapPng');
@@ -95,7 +109,7 @@ class Game extends Component {
           moves={moves}
         />
         <div className="app-container" onKeyDown={this.handleKeyDown}>
-          <Map map={map} selectedPosition={selectedPosition} />
+          {this.getGameState(gameState, selectedPosition)}
         </div>
         <Stats />
         <GameLog />
