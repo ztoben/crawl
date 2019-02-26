@@ -78,7 +78,7 @@ class Game extends Component {
     }
   };
 
-  getGameState = (gameState, selectedPosition) => {
+  getGameState = (gameState, selectedPosition, map) => {
     switch (gameState) {
       case 'ongoing':
         return <Map map={map} selectedPosition={selectedPosition} />;
@@ -109,7 +109,7 @@ class Game extends Component {
           moves={moves}
         />
         <div className="app-container" onKeyDown={this.handleKeyDown}>
-          {this.getGameState(gameState, selectedPosition)}
+          {this.getGameState(gameState, selectedPosition, map)}
         </div>
         <Stats />
         <GameLog />
