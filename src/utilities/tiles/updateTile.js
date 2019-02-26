@@ -1,6 +1,6 @@
-import buildTileContent from './buildTileContent';
-import {getStyle} from '../map/getStyle';
+import {buildTileContent} from './buildTileContent';
 import {getTile} from './getTile';
+import {getStyle} from '../map';
 
 export function updateTile(map, type, position, discoveredPercent) {
   const tile = {...getTile(map, position)};

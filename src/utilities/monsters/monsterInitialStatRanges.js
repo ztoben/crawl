@@ -1,4 +1,4 @@
-import {GHOUL, GOBLIN, SKELETON, ORC, ZOMBIE} from './monsters';
+import {GHOUL, GOBLIN, SKELETON, ORC, ZOMBIE} from './constants';
 
 export const ranges = {
   [GHOUL]: {

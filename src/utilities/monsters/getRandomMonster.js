@@ -1,7 +1,7 @@
 import any from '@travi/any';
 import {ranges} from './monsterInitialStatRanges';
 import {getMonsterStats} from './getMonsterStats';
-import {allMonsters} from './monsters';
+import {allMonsters} from './constants';
 
 export function getRandomMonster() {
   const monsterType = any.fromList(allMonsters);

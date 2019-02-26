@@ -1,3 +1,4 @@
+export const MONSTER = 'monster';
 export const GHOUL = 'ghoul';
 export const GOBLIN = 'goblin';
 export const SKELETON = 'skeleton';

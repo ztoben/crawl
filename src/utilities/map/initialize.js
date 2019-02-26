@@ -1,11 +1,11 @@
-import buildTileContent from '../tiles/buildTileContent';
+import {connectDungeons, populateDungeons} from '../dungeons';
 import {isOuterBoundary} from './isOuterBoundary';
 import {MAP_SIZE} from './constants';
 import {getStyle} from './getStyle';
 import {BOUNDARY, VOID} from '../tiles/constants';
-import {populateDungeons} from '../dungeons/populateDungeons';
-import {connectDungeons} from '../dungeons/connectDungeons';
-import {addChestsToMap} from '../chests/addChestsToMap';
+import {addChestsToMap} from '../chests';
+import {addMonstersToMap} from '../monsters';
+import {buildTileContent} from '../tiles';
 
 export async function initializeMap() {
   const map = [];
@@ -35,6 +35,7 @@ export async function initializeMap() {
   const connectedMap = await connectDungeons(map, populatedDungeons);
 
   addChestsToMap(connectedMap);
+  addMonstersToMap(connectedMap);
 
   return {
     map: connectedMap,

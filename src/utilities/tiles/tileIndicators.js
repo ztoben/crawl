@@ -6,3 +6,4 @@ export const BOTTOM_LEFT_BORDER = '╚';
 export const BOTTOM_RIGHT_BORDER = '╝';
 export const FLOOR_CONTENT = '◻';
 export const CHEST_CONTENT = '⌘';
+export const MONSTER_CONTENT = '☒';

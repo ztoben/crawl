@@ -1,9 +1,10 @@
 import {BOUNDARY, FLOOR, VOID} from './constants';
-import {CHEST_CONTENT, FLOOR_CONTENT} from './tileIndicators';
+import {CHEST_CONTENT, FLOOR_CONTENT, MONSTER_CONTENT} from './tileIndicators';
 import {buildBorderContent} from './buildBorderContent';
 import {CHEST} from '../chests/constants';
+import {MONSTER} from '../monsters/constants';
 
-export default function buildTileContent(type, position) {
+export function buildTileContent(type, position) {
   if (BOUNDARY === type) return buildBorderContent(position);
 
   switch (type) {
@@ -13,6 +14,8 @@ export default function buildTileContent(type, position) {
       return '\u25E6';
     case CHEST:
       return CHEST_CONTENT;
+    case MONSTER:
+      return MONSTER_CONTENT;
   }
 
   return '';

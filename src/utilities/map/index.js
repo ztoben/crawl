@@ -1,0 +1,1 @@
+export {getStyle} from './getStyle';

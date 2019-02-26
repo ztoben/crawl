@@ -3,8 +3,8 @@ import {normalizePosition} from './normalizePosition';
 import {getTile, isBoundary, isVoid} from '..';
 import {getRandomPhrase} from '../gameLog/getRandomPhrase';
 import {VOID_MOVEMENT} from '../gameLog/constants';
-import {isChest} from '../chests/isChest';
-import {openChest} from '../chests/openChest';
+import {isMonster, attackMonster} from '../monsters';
+import {isChest, openChest} from '../chests';
 
 function getPositionAfterEvent(selectedPosition, event) {
   const newPosition = [...selectedPosition];
@@ -49,6 +49,14 @@ export function getNewPosition(map, selectedPosition, event, logEvent, store) {
       store,
       logEvent,
       type: tile.data.type,
+      position: normalizePosition(newPosition),
+    });
+  }
+  if (isMonster(tile)) {
+    return attackMonster({
+      store,
+      logEvent,
+      monster: tile.data,
       position: normalizePosition(newPosition),
     });
   }
