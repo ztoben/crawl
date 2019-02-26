@@ -7,12 +7,12 @@ class Map extends Component {
   renderTiles = () => {
     const {map, selectedPosition} = this.props;
 
-    return getViewingArea(selectedPosition, map).map(row => {
-      return row.map(({type, index, content, style, selected}) => {
+    return getViewingArea(selectedPosition, map).map(area => {
+      return area.map(({type, index, content, style}) => {
         return (
           <Tile
             type={type}
-            selected={selected}
+            selected={index.toString() === selectedPosition.toString()}
             key={index.toString()}
             content={content}
             style={style}

@@ -5,6 +5,7 @@ import {getStyle} from './getStyle';
 import {BOUNDARY, VOID} from '../tiles/constants';
 import {populateDungeons} from '../dungeons/populateDungeons';
 import {connectDungeons} from '../dungeons/connectDungeons';
+import {addChestsToMap} from '../chests/addChestsToMap';
 
 export async function initializeMap() {
   const map = [];
@@ -32,6 +33,8 @@ export async function initializeMap() {
 
   const populatedDungeons = populateDungeons(map);
   const connectedMap = await connectDungeons(map, populatedDungeons);
+
+  addChestsToMap(connectedMap);
 
   return {
     map: connectedMap,

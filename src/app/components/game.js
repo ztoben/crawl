@@ -22,25 +22,20 @@ class Game extends Component {
     super(props);
 
     this.state = {
-      map: [],
-      dungeons: [],
-      selectedPosition: [],
       moves: 0,
-      miniMapPng: undefined,
     };
   }
 
   async componentDidMount() {
+    const {store} = this.props;
     const {map, dungeons} = await initializeMap();
     const selectedPosition = findStartingPosition(map);
     const miniMapPng = initializeMiniMap(map);
 
-    this.setState({
-      map: updateMaps(map, miniMapPng, selectedPosition),
-      dungeons,
-      selectedPosition,
-      miniMapPng,
-    });
+    store.set('selectedPosition')(selectedPosition);
+    store.set('miniMapPng')(miniMapPng);
+    store.set('map')(updateMaps(map, miniMapPng, selectedPosition));
+    store.set('dungeons')(dungeons);
 
     document.addEventListener('keydown', this.handleKeyDown.bind(this));
 
@@ -63,20 +58,32 @@ class Game extends Component {
   };
 
   handleKeyDown = event => {
-    const {selectedPosition, map, moves, miniMapPng} = this.state;
-    const newPosition = getNewPosition(map, selectedPosition, event, this.logEvent);
+    const {store} = this.props;
+    const {moves} = this.state;
+
+    const map = store.get('map');
+    const miniMapPng = store.get('miniMapPng');
+    const selectedPosition = store.get('selectedPosition');
+    const newPosition = getNewPosition(map, selectedPosition, event, this.logEvent, store);
 
     if (!isArrayEqual(selectedPosition, newPosition)) {
+      store.set('selectedPosition')(newPosition);
+      store.set('map')(updateMaps(map, miniMapPng, newPosition));
+
       this.setState({
-        selectedPosition: newPosition,
-        map: updateMaps(map, miniMapPng, newPosition, selectedPosition),
         moves: moves + 1,
       });
     }
   };
 
   render() {
-    const {selectedPosition, map, dungeons, moves, miniMapPng} = this.state;
+    const {moves} = this.state;
+    const {store} = this.props;
+
+    const map = store.get('map');
+    const dungeons = store.get('dungeons');
+    const miniMapPng = store.get('miniMapPng');
+    const selectedPosition = store.get('selectedPosition');
 
     return (
       <Fragment>
@@ -88,7 +95,6 @@ class Game extends Component {
           moves={moves}
         />
         <div className="app-container" onKeyDown={this.handleKeyDown}>
-          <h1>c r a w l</h1>
           <Map map={map} selectedPosition={selectedPosition} />
         </div>
         <Stats />

@@ -1,6 +1,9 @@
 import {withReduxDevtools, createConnectedStore} from 'undux';
 
 const initialState = {
+  map: [],
+  dungeons: [],
+  miniMapPng: undefined,
   name: '',
   class: '',
   hp: 0,
@@ -15,6 +18,8 @@ const initialState = {
   monsterPositions: [],
   chests: [],
   chestPositions: [],
+  selectedPosition: [],
+  gameState: 'ongoing', //ongoing, over, win
 };
 
 export default createConnectedStore(initialState, withReduxDevtools);

@@ -12,11 +12,6 @@ function getDiscoveredPercent(x, y, posX, posY) {
   return 0.25;
 }
 
-function setSelected(map, newPosition, oldPosition) {
-  if (oldPosition) toggleSelectedTile(getTile(map, oldPosition));
-  toggleSelectedTile(getTile(map, newPosition));
-}
-
 function updateMapTile(map, x, y, tile, addedPercent) {
   map[x][y] = updateTile(map, tile.type, [x, y], Math.max(addedPercent, tile.discoveredPercent));
 }
@@ -40,12 +35,11 @@ function updateMapTilesAndMiniMap(posX, posY, map, miniMapPng, selectedPosition)
   }
 }
 
-export function updateMaps(map, miniMapPng, newPosition, oldPosition) {
+export function updateMaps(map, miniMapPng, newPosition) {
   const newMap = [...map];
   const [posX, posY] = newPosition;
 
   updateMapTilesAndMiniMap(posX, posY, newMap, miniMapPng, newPosition);
-  setSelected(newMap, newPosition, oldPosition);
 
   return newMap;
 }
