@@ -3,28 +3,28 @@ import {GHOUL, GOBLIN, SKELETON, ORC, ZOMBIE} from './constants';
 export const ranges = {
   [GHOUL]: {
     hp: {
-      min: 5,
-      max: 10,
+      min: 15,
+      max: 20,
     },
     mp: {
       min: 5,
       max: 10,
     },
     atk: {
-      min: 2,
+      min: 5,
       max: 7,
     },
     def: {
-      min: 1,
+      min: 4,
       max: 6,
     },
     satk: {
-      min: 5,
-      max: 10,
+      min: 18,
+      max: 20,
     },
     sdef: {
-      min: 3,
-      max: 10,
+      min: 9,
+      max: 16,
     },
   },
   [GOBLIN]: {
@@ -37,12 +37,12 @@ export const ranges = {
       max: 12,
     },
     atk: {
-      min: 3,
-      max: 9,
+      min: 8,
+      max: 12,
     },
     def: {
-      min: 3,
-      max: 10,
+      min: 6,
+      max: 13,
     },
     satk: {
       min: 7,
@@ -63,8 +63,8 @@ export const ranges = {
       max: 14,
     },
     atk: {
-      min: 5,
-      max: 11,
+      min: 6,
+      max: 16,
     },
     def: {
       min: 4,
@@ -81,20 +81,20 @@ export const ranges = {
   },
   [ORC]: {
     hp: {
-      min: 8,
-      max: 20,
+      min: 15,
+      max: 25,
     },
     mp: {
       min: 2,
       max: 8,
     },
     atk: {
-      min: 10,
-      max: 15,
+      min: 12,
+      max: 20,
     },
     def: {
-      min: 10,
-      max: 15,
+      min: 12,
+      max: 17,
     },
     satk: {
       min: 1,
@@ -107,20 +107,20 @@ export const ranges = {
   },
   [ZOMBIE]: {
     hp: {
-      min: 7,
-      max: 14,
+      min: 14,
+      max: 18,
     },
     mp: {
       min: 5,
       max: 10,
     },
     atk: {
-      min: 8,
-      max: 14,
+      min: 13,
+      max: 16,
     },
     def: {
-      min: 7,
-      max: 13,
+      min: 11,
+      max: 19,
     },
     satk: {
       min: 4,

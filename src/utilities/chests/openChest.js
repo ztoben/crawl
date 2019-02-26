@@ -3,13 +3,7 @@ import {selectEmptyRandomCoordinate} from '../helpers/selectEmptyRandomCoordinat
 import {FLOOR} from '../tiles/constants';
 import {getNewPosition, isArrayEqual, updateMaps} from '..';
 import {KEY} from '../items/constants';
-
-function clearTile(position, map) {
-  const [x, y] = position;
-
-  map[x][y].type = FLOOR;
-  map[x][y].data = undefined;
-}
+import {clearTile} from '../tiles/clearTile';
 
 export function openChest({store, logEvent, type, position}) {
   const map = store.get('map');

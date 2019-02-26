@@ -16,8 +16,8 @@ class Stats extends Component {
       items.map(({name, stat, effect}, idx) => {
         return (
           <tr key={idx}>
-            <td>{name}</td>
-            <td className={stat}>{`+${effect}`}</td>
+            <td colSpan={effect ? 1 : 2}>{name}</td>
+            {effect ? <td className={stat}>{`+${effect}`}</td> : null}
           </tr>
         );
       })
