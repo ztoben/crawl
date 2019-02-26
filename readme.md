@@ -22,9 +22,9 @@ View the live version [here](http://ztoben-crawl.surge.sh/).
 - [x] Implement [Undux](https://github.com/bcherny/undux) for state management
 - [x] Add player info to panel (name, class, stats, etc.)
 - [ ] Build stats based on player class selection
-- [ ] Randomly generated collectible items
-- [ ] Game log for giving updates on player status, fights, items, etc.
+- [x] Randomly generated collectible chests
+- [x] Game log for giving updates on player status, fights, items, etc.
 - [ ] Generate enemies and place them statically on the map
 - [ ] Design a fighting interaction that gives updates in the log
-- [ ] Use a key and lock system to keep players from progressing too quickly
+- [ ] Use a key and lock system for the final chest to keep players from progressing too quickly
 - [ ] Use [IronDb](https://github.com/gruns/irondb) for storing the game state
