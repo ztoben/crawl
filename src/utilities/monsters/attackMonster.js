@@ -26,8 +26,6 @@ export function attackMonster({store, logEvent, monster, position}) {
     sdef: store.get('sdef'),
   };
 
-  console.log(monster);
-
   const {playerDamage, monsterDamage} = calcTotalDamage(playerStats, monster);
   const [posX, posY] = position;
 
