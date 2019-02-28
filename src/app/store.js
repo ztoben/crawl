@@ -12,6 +12,7 @@ const initialState = {
   def: 0,
   satk: 0,
   sdef: 0,
+  exp: 0,
   items: [],
   gameLog: [],
   monsters: [],
