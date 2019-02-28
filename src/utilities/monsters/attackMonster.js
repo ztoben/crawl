@@ -53,6 +53,7 @@ export function attackMonster({store, logEvent, monster, position}) {
       logEvent(`The ${monster.type} dropped a ${drop.name}`);
       store.set('items')([...store.get('items'), drop]);
     });
+    store.set('exp')(store.get('exp') + monster.experience);
 
     clearTile(position, map);
 

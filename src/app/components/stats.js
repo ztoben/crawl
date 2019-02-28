@@ -48,6 +48,10 @@ class Stats extends Component {
                   <td>{store.get('class')}</td>
                 </tr>
                 <tr>
+                  <td>exp</td>
+                  <td className="exp">{store.get('exp')}</td>
+                </tr>
+                <tr>
                   <td>hp</td>
                   <td className="hp">{store.get('hp')}</td>
                 </tr>
