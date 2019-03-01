@@ -1,5 +1,6 @@
 import any from '@travi/any';
 import {clearTile} from '../tiles/clearTile';
+import {checkExp} from '../player/checkExp';
 
 function calcAttackDamage(atk, def) {
   return Math.max(atk - any.integer({min: def, max: def * 2}), 2);
@@ -53,7 +54,8 @@ export function attackMonster({store, logEvent, monster, position}) {
       logEvent(`The ${monster.type} dropped a ${drop.name}`);
       store.set('items')([...store.get('items'), drop]);
     });
-    store.set('exp')(store.get('exp') + monster.experience);
+
+    checkExp(store, monster, logEvent);
 
     clearTile(position, map);
 
