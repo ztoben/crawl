@@ -1,10 +1,11 @@
 # C R A W L
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/ztoben/crawl.svg)](https://greenkeeper.io/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/33fde023-95e9-4932-899f-1f8755e8deac/deploy-status)](https://app.netlify.com/sites/crawl/deploys)
 
-A dungeon crawler written in React.js
+_A dungeon crawler written in React.js_
 
-View the live version [here](http://ztoben-crawl.surge.sh/).
+View the live version [here](https://crawl.netlify.com/).
 
 <img width="900" alt="crawl" src="https://user-images.githubusercontent.com/4007345/53415476-f7fde500-3996-11e9-92b3-e4f0ddfef26b.png">
 
@@ -29,3 +30,4 @@ View the live version [here](http://ztoben-crawl.surge.sh/).
 - [x] Use a key and lock system for the final chest to keep players from progressing too quickly
 - [ ] Use [IronDb](https://github.com/gruns/irondb) for storing the game state
 - [ ] Tweak stats and fighting formula for better balance
+- [ ] Player experience and leveling, monster stat boosts based on leveling
