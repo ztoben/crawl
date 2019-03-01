@@ -13,6 +13,8 @@ const initialState = {
   satk: 0,
   sdef: 0,
   exp: 0,
+  expRequired: 10,
+  level: 1,
   items: [],
   gameLog: [],
   monsters: [],

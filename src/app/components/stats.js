@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Store from '../store';
 import {Link} from 'react-router-dom';
 import '../style/stats.scss';
+import ExperienceBar from './experienceBar';
 
 class Stats extends Component {
   buildItemsTable = () => {
@@ -48,8 +49,8 @@ class Stats extends Component {
                   <td>{store.get('class')}</td>
                 </tr>
                 <tr>
-                  <td>exp</td>
-                  <td className="exp">{store.get('exp')}</td>
+                  <td>level</td>
+                  <td className="level">{store.get('level')}</td>
                 </tr>
                 <tr>
                   <td>hp</td>
@@ -77,6 +78,7 @@ class Stats extends Component {
                 </tr>
               </tbody>
             </table>
+            <ExperienceBar />
             <table className="items-table">
               <thead>
                 <tr>
