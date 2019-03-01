@@ -45,8 +45,7 @@
       }
 
       .experience-bar {
-        width: 97%;
-        margin: 10px auto;
+        width: calc(100% - 8px);
       }
 
       .stats-table,

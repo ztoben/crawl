@@ -1,23 +1,14 @@
 language: node_js
 
 node_js:
-- "stable"
+  - 'stable'
 
 cache:
   directories:
-  - "$HOME/.npm"
+    - '$HOME/.npm'
 
 install:
-- npm install
+  - npm install
 
 script:
-- npm run build
-
-deploy:
-  project: ./dist/
-  provider: surge
-  domain: ztoben-crawl.surge.sh
-  skip-cleanup: true
-  keep-history: true
-  on:
-    branch: master
+  - npm run build

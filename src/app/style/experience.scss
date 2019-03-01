@@ -1,8 +1,8 @@
 .experience-bar {
+  margin: 10px auto;
   position: relative;
   height: 25px;
   border: 2px solid white;
-  margin-top: 10px;
 }
 
 .experience-bar-filler {
@@ -19,4 +19,5 @@
   width: 100%;
   height: 100%;
   color: white;
+  line-height: 25px;
 }
