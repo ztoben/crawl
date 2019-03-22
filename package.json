@@ -29,7 +29,7 @@
     "easystarjs": "0.4.3",
     "node-pnglib": "1.5.5",
     "prop-types": "15.7.2",
-    "react": "16.8.4",
+    "react": "16.8.5",
     "react-router-dom": "4.4.0",
     "rxjs": "6.3.3",
     "undux": "5.0.0-beta.20"
@@ -51,7 +51,7 @@
     "node-sass": "4.11.0",
     "prettier": "1.15.3",
     "pretty-quick": "1.9.0",
-    "react-dom": "16.8.4",
+    "react-dom": "16.8.5",
     "react-hot-loader": "4.8.0",
     "sass-loader": "7.1.0",
     "style-loader": "0.23.1",
