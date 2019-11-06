@@ -52,7 +52,7 @@
     "prettier": "1.18.2",
     "pretty-quick": "2.0.1",
     "react-dom": "16.11.0",
-    "react-hot-loader": "4.12.15",
+    "react-hot-loader": "4.12.16",
     "sass-loader": "8.0.0",
     "style-loader": "1.0.0",
     "url-loader": "2.2.0",
