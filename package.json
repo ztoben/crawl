@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "@travi/any": "2.0.6",
-    "date-fns": "2.6.0",
+    "date-fns": "2.7.0",
     "easystarjs": "0.4.3",
     "node-pnglib": "1.5.5",
     "prop-types": "15.7.2",
