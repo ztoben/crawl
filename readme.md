@@ -1,6 +1,6 @@
 # C R A W L
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/ztoben/crawl.svg)](https://greenkeeper.io/)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/33fde023-95e9-4932-899f-1f8755e8deac/deploy-status)](https://app.netlify.com/sites/crawl/deploys)
 
 _A dungeon crawler written in React.js_
