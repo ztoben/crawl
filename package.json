@@ -29,7 +29,7 @@
     "easystarjs": "0.4.3",
     "node-pnglib": "1.5.5",
     "prop-types": "15.7.2",
-    "react": "16.13.0",
+    "react": "16.13.1",
     "react-router-dom": "5.1.2",
     "rxjs": "6.5.4",
     "undux": "5.2.0"
