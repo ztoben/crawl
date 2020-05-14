@@ -54,7 +54,7 @@
     "node-sass": "4.13.1",
     "prettier": "1.19.1",
     "pretty-quick": "2.0.1",
-    "react-dom": "16.13.0",
+    "react-dom": "16.13.1",
     "react-hot-loader": "4.12.20",
     "sass-loader": "8.0.2",
     "style-loader": "1.1.3",
