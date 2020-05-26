@@ -34,7 +34,7 @@
     "react": "16.13.1",
     "react-router-dom": "5.2.0",
     "rxjs": "6.5.5",
-    "snyk": "1.323.2",
+    "snyk": "1.329.0",
     "undux": "5.2.0"
   },
   "devDependencies": {
