@@ -7,9 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "build": "webpack --config ./webpack.config.js --mode production",
-    "lint": "pretty-quick",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect"
+    "lint": "pretty-quick"
   },
   "repository": {
     "type": "git",
@@ -34,7 +32,6 @@
     "react": "16.13.1",
     "react-router-dom": "5.2.0",
     "rxjs": "6.5.5",
-    "snyk": "1.332.0",
     "undux": "5.2.0"
   },
   "devDependencies": {
@@ -62,6 +59,5 @@
     "webpack": "4.43.0",
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "3.11.0"
-  },
-  "snyk": true
+  }
 }
