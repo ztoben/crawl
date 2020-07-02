@@ -31,7 +31,7 @@
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-router-dom": "5.2.0",
-    "rxjs": "6.5.5",
+    "rxjs": "6.6.0",
     "undux": "5.2.0"
   },
   "devDependencies": {
