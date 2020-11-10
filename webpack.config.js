@@ -1,8 +1,11 @@
 const webpack = require('webpack');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const {getIfUtils, removeEmpty} = require('webpack-config-utils');
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
-module.exports = () => {
+module.exports = (env) => {
+  const {ifProduction} = getIfUtils(env);
+
   return {
     entry: ['react-hot-loader/patch', './src/index.js'],
     module: {
@@ -58,16 +61,23 @@ module.exports = () => {
     output: {
       path: __dirname + '/dist',
       publicPath: '/',
-      filename: 'bundle.js',
+      filename: '[name].[fullhash].js',
     },
-    plugins: [
+    plugins: removeEmpty([
       new webpack.HotModuleReplacementPlugin(),
       new HtmlWebPackPlugin({
         template: './src/index.html',
         filename: 'index.html',
       }),
-      new FaviconsWebpackPlugin('./assets/favicon.png'),
-    ],
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+        Buffer: ['buffer', 'Buffer'],
+      }),
+      new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(ifProduction('production', 'development')),
+      }),
+      // new FaviconsWebpackPlugin('./assets/favicon.png'), temporarily disable until webpack 5 compatible
+    ]),
     devServer: {
       compress: true,
       contentBase: './dist',
