@@ -35,7 +35,7 @@
     "undux": "5.2.0"
   },
   "devDependencies": {
-    "@babel/core": "7.12.7",
+    "@babel/core": "7.12.8",
     "@babel/plugin-proposal-class-properties": "7.12.1",
     "@babel/plugin-transform-regenerator": "7.12.1",
     "@babel/polyfill": "7.12.1",
