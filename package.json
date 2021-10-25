@@ -47,7 +47,7 @@
     "css-loader": "6.3.0",
     "favicons-webpack-plugin": "5.0.2",
     "html-loader": "2.1.2",
-    "html-webpack-plugin": "5.3.2",
+    "html-webpack-plugin": "5.5.0",
     "husky": "7.0.2",
     "prettier": "2.4.1",
     "pretty-quick": "3.1.1",
